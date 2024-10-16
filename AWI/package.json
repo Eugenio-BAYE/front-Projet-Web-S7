@@ -12,7 +12,8 @@
   "private": true,
   "config": {
     "commitizen": {
-      "path": "@commitlint/cz-commitlint"
+      "path": "@commitlint/cz-commitlint",
+      "useEditor": "true"
     }
   },
   "dependencies": {
