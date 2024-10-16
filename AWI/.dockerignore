@@ -1,0 +1,17 @@
+# Ignorer les dépendances locales
+node_modules
+dist
+coverage
+
+# Ignorer les fichiers de configuration et de build locaux
+.dockerignore
+.git
+.gitignore
+README.md
+
+# Ignorer les fichiers de configuration de l'IDE et de l'OS
+*.DS_Store
+*.env
+*.log
+.idea
+.vscode
