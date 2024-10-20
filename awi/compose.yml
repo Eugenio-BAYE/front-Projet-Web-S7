@@ -1,5 +1,6 @@
 services:
   front:
+    profiles: ["dev"]
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,3 +15,18 @@ services:
        - path : .
          target : /src
          action : sync
+
+  front-prod:
+    profiles: ["prod"]
+    build:
+      context: .
+      dockerfile: Dockerfile_prod
+    ports:
+      - 8080:80
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  tasked:
