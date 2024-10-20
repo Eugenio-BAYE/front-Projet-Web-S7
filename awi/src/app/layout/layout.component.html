@@ -1,2 +1,45 @@
-<div class="w-full relative">
-</div>
+<header class="bg-gray-900 text-white w-full relative border-russian_violet-900 border-0 shadow-sm shadow-prussian_blue-100">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <div class="flex lg:flex-1">
+      <a href="#" class="-m-1.5 p-1.5">
+        <span class="sr-only">Your Company</span>
+        <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Logo">
+      </a>
+    </div>
+    <div class="flex lg:hidden">
+      <button (click)="toggleSidebar()" id="burgerButton" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-prussian_blue-600">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+    <div class="hidden lg:flex lg:gap-x-12 lg:justify-center">
+      <a href="#" class="text-sm font-semibold leading-6 text-prussian_blue-600">Catalogue</a>
+      <a href="#" class="text-sm font-semibold leading-6 text-prussian_blue-600">Vente</a>
+      <a href="#" class="text-sm font-semibold leading-6 text-prussian_blue-600">Login</a>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <div [class.translate-x-full]="!isSidebarVisible" id="sidebarMenu" class="fixed inset-y-0 right-0 z-10 w-full max-w-xs bg-gray-800 text-white transform transition-transform duration-300 ease-in-out lg:hidden">
+    <div class="p-6">
+      <div class="flex items-center justify-between">
+        <a href="#" class="text-white">
+          <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Logo">
+        </a>
+        <button (click)="toggleSidebar()" id="closeButton" type="button" class="text-gray-400">
+          <span class="sr-only">Close menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mt-6 space-y-2">
+        <a href="#" class="block rounded-lg py-2 px-3 text-base font-semibold hover:bg-gray-700">Catalogue</a>
+        <a href="#" class="block rounded-lg py-2 px-3 text-base font-semibold hover:bg-gray-700">Vente</a>
+        <a href="#" class="block rounded-lg py-2 px-3 text-base font-semibold hover:bg-gray-700">Login</a>
+      </div>
+    </div>
+  </div>
+</header>

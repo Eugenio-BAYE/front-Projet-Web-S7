@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
+      white : '#ffffff',
       russian_violet: {
         DEFAULT: "#10002b",
         100: "#030008",
