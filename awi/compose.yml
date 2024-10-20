@@ -1,0 +1,16 @@
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    develop:
+     watch:
+       - path : ./package.json
+         action : rebuild
+       - path : ./angular.json
+         action : rebuild
+       - path : .
+         target : /src
+         action : sync
