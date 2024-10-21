@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,13 @@ import { LayoutComponent } from './shared/layout/layout.component';
 })
 export class AppComponent {
   title = 'awi';
+
+  constructor() {
+    console.log(
+      'Currently using : ' +
+        (environment.production
+          ? 'production environment'
+          : 'development environment')
+    );
+  }
 }
