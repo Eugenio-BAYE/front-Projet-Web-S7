@@ -1,16 +1,31 @@
 ARG NODE_VERSION=22.0.0
-ARG PORT=4200
 
-FROM node:${NODE_VERSION}-alpine
+FROM node:${NODE_VERSION}-alpine AS build
 
-WORKDIR /src
+WORKDIR /usr/src/app
 
-COPY . /src
+COPY . /usr/src/app
 
 RUN npm install -g @angular/cli
 
 RUN npm install
 
-EXPOSE ${PORT}
+COPY . .
 
-CMD ["npm", "start"]
+RUN npm run build
+
+## Stage 2 (Production)
+FROM nginx:1.27.2-alpine
+
+# Copier la configuration Nginx comme template
+COPY nginx.conf.template /etc/nginx/nginx.conf.template
+
+# Diagnostic
+RUN echo "Port is: $PORT" 
+
+# Remplacer ${PORT} par la valeur réelle de la variable d'environnement
+
+COPY --from=build /usr/src/app/dist/awi /usr/share/nginx/html
+
+# Substituer la variable ${PORT} et afficher sa valeur avant de démarrer Nginx
+CMD ["/bin/sh", "-c", "echo 'Le port utilisé est: ${PORT}' && envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]

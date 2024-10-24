@@ -1,7 +1,3 @@
 build:
-  context: .
-  dockerfile: Dockerfile_prod
-ports:
-  - 8080:80
-environment:
-  - API_URL=${API_URL} # TODO: Change to API URL for production
+  docker:
+    web: Dockerfile
