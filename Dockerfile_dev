@@ -21,7 +21,7 @@ FROM nginx:1.27.2-alpine
 COPY nginx.conf.template /etc/nginx/nginx.conf.template
 
 # Diagnostic
-RUN echo "Port is: ${PORT}" 
+RUN echo "Port is: $PORT" 
 
 # Remplacer ${PORT} par la valeur réelle de la variable d'environnement
 RUN envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
