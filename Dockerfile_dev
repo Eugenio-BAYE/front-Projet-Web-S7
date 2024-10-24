@@ -24,7 +24,8 @@ COPY nginx.conf.template /etc/nginx/nginx.conf.template
 RUN echo "Port is: $PORT" 
 
 # Remplacer ${PORT} par la valeur réelle de la variable d'environnement
-RUN envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
 
 COPY --from=build /usr/src/app/dist/awi /usr/share/nginx/html
 
+# Substituer la variable ${PORT} et afficher sa valeur avant de démarrer Nginx
+CMD ["/bin/sh", "-c", "echo 'Le port utilisé est: ${PORT}' && envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]
