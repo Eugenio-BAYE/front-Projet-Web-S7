@@ -17,13 +17,14 @@ RUN npm run build
 ## Stage 2 (Production)
 FROM nginx:1.27.2-alpine
 
-
 # Copier la configuration Nginx comme template
 COPY nginx.conf.template /etc/nginx/nginx.conf.template
 
+# Diagnostic
+RUN echo "Port is: ${PORT}" 
+
 # Remplacer ${PORT} par la valeur réelle de la variable d'environnement
 RUN envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
-
 
 COPY --from=build /usr/src/app/dist/awi /usr/share/nginx/html
 
