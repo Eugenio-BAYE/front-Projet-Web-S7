@@ -1,5 +1,30 @@
-<header class="bg-gray-900 text-white w-full relative border-russian_violet-900 border-0 shadow-sm shadow-prussian_blue-100">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+<header
+  class="flex text-text font-medium w-full relative content-center justify-between py-2 px-2 space-x-5 border-b border-overlay0">
+
+  <nav class="flex content-center justify-between">
+    <a href="#" class="font-bold hover:text-prussian_blue-600 flex">
+      <img [src]="headerItems[0].icon" alt="Icon" class="h-14 w-auto self-center mx-4" />
+      <p class="content-center">{{ headerItems[0].title }}</p>
+    </a>
+  </nav>
+<!-- Item  List -->
+  <div class="content-center place-content-center self-center lg:block hidden ring-1 ring-surface0 rounded-full p-2">
+    <a *ngFor="let navItem of navItems" href="{{navItem.route}}" class=" self-center place-content-center px-4 ">
+      <span class="font-normal rounded-2xl ring-overlay0 px-3 py-1 transition ease-in-out hover:ring-1  hover:bg-overlay0 hover:bg-opacity-20 border-0 ring-0" *ngIf="!navItem.forAdmin">{{ navItem.label }}</span>
+    </a>
+  </div>
+
+  <div class="rounded border border-gray-300 text-gray-500 bg-gray-100 px-2 pr-10 mr-4 my-2 content-center lg:block hidden">
+    Search...
+  </div>
+
+  <div class="max-lg:block hidden content-center justify-end px-4">
+    <mat-icon class="scale-150">menu</mat-icon>
+  </div>
+
+
+
+  <!-- <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
       <a href="#" class="-m-1.5 p-1.5">
         <span class="sr-only">Your Company</span>
@@ -19,10 +44,10 @@
       <a href="#" class="text-sm font-semibold leading-6 text-prussian_blue-600">Vente</a>
       <a href="#" class="text-sm font-semibold leading-6 text-prussian_blue-600">Login</a>
     </div>
-  </nav>
+  </nav> -->
 
   <!-- Sidebar -->
-  <div [class.translate-x-full]="!isSidebarVisible" id="sidebarMenu" class="fixed inset-y-0 right-0 z-10 w-full max-w-xs bg-gray-800 text-white transform transition-transform duration-300 ease-in-out lg:hidden">
+  <!-- <div [class.translate-x-full]="!isSidebarVisible" id="sidebarMenu" class="fixed inset-y-0 right-0 z-10 w-full max-w-xs bg-gray-800 text-white transform transition-transform duration-300 ease-in-out lg:hidden">
     <div class="p-6">
       <div class="flex items-center justify-between">
         <a href="#" class="text-white">
@@ -41,5 +66,6 @@
         <a href="#" class="block rounded-lg py-2 px-3 text-base font-semibold hover:bg-gray-700">Login</a>
       </div>
     </div>
-  </div>
+  </div> -->
+
 </header>
