@@ -19,12 +19,17 @@ export const NAV_ITEMS: NavItem[] = [
         label: 'About',
         route: 'About',
         forAdmin: false
-    }
+    },
+    {
+        label: 'Manage',
+        route: 'admin',
+        forAdmin: false
+    },
 ];
 
 export const HEADER_ITEMS = [
     {
-        title: 'Nom',
-        icon: 'favicon' // Assuming 'favicon' is the icon name for the logo
+        title: 'MonoPolytech',
+        icon: 'https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600',
     }
-];
+]

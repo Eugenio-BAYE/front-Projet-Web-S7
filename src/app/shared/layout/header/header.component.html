@@ -1,15 +1,27 @@
 <header
-  class="bg-gray-900 text-white w-full relative border-russian_violet-900 border-0 shadow-sm shadow-prussian_blue-100">
+  class="flex text-text font-medium w-full relative shadow-lg shadow-blue content-center justify-between py-2 px-2 space-x-5 rounded-b">
 
-  <nav class="flex">
-    <a href="#" class="text-white hover:text-prussian_blue-600 px-4 py-2" *ngFor="let headerItem of headerItems">
-      <p>{{ headerItem.title }}</p>
-      <img [src]="headerItem.icon" alt="Icon" class="h-8 w-auto" />
-    </a>
-    <a *ngFor="let navItem of navItems" class="text-white hover:text-prussian_blue-600 px-4 py-2">
-      {{ navItem.label}}
+  <nav class="flex content-center justify-between">
+    <a href="#" class="font-bold hover:text-prussian_blue-600 flex">
+      <img [src]="headerItems[0].icon" alt="Icon" class="h-14 w-auto self-center mx-4" />
+      <p class="content-center">{{ headerItems[0].title }}</p>
     </a>
   </nav>
+
+  <div class="mx-10 content-center self-center lg:block hidden">
+    <a *ngFor="let navItem of navItems" href="{{navItem.route}}" class=" hover:text-prussian_blue-600 px-4 py-2">
+      <span *ngIf="!navItem.forAdmin">{{ navItem.label }}</span>
+    </a>
+  </div>
+
+  <div class="rounded border border-gray-300 text-gray-500 bg-gray-100 px-2 pr-10 mr-4 my-2 content-center lg:block hidden">
+    Search...
+  </div>
+
+  <div class="max-lg:block hidden content-center justify-end px-4">
+    <mat-icon class="scale-150">menu</mat-icon>
+  </div>
+
 
 
   <!-- <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
