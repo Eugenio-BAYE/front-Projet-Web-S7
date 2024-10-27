@@ -2,9 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        palanquin: ['Palanquin', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
+    },
     colors: {
-      white : '#ffffff',
+      white: '#ffffff',
       russian_violet: {
         DEFAULT: "#10002b",
         100: "#030008",
@@ -223,5 +228,14 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  extend: {
+    
+  },
+  plugins: [
+    require("@catppuccin/tailwindcss")({
+      // prefix to use, e.g. `text-pink` becomes `text-ctp-pink`.
+      // default is `false`, which means no prefix
+      // which flavour of colours to use by default, in the `:root`
+      defaultFlavour: "mocha",
+    }),],
 };
