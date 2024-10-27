@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-layout',
+  selector: 'app-header',
   standalone: true,
   imports: [],
-  templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
 })
-export class LayoutComponent {
+export class HeaderComponent {
   isSidebarVisible = false;
 
   toggleSidebar() {
