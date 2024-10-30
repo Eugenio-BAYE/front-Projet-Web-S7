@@ -1,0 +1,7 @@
+<p>form works!</p>
+<!-- form.component.html -->
+<form (ngSubmit)="onSubmit()">
+    <app-input-field *ngFor="let field of fields" [field]="field" [(ngModel)]="formData[field.name]" [name]="field.name"></app-input-field>
+    <button type="submit">Create User</button>
+  </form>
+  
