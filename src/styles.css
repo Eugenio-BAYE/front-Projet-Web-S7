@@ -6,6 +6,9 @@
 @tailwind utilities;
 
 
+
+
 body {
   font-family: "Inter V", sans-serif;
+  @apply bg-mantle;
 }
