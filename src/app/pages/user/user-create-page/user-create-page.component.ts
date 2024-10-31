@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ApiService } from 'src/app/core/services/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-create-page',
@@ -23,7 +24,8 @@ export class UserCreatePageComponent {
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() { // TODO: Add form validation messages
@@ -76,15 +78,27 @@ export class UserCreatePageComponent {
     this.apiService.createUser(formData).subscribe({ // TODO: Use toasts for success and error messages
       next: (response) => {
         console.log("User created successfully" + JSON.stringify(response));
+        this.snackBar.open('User created successfully', 'Close', {
+          duration: 3000,
+        });
       },
       error: (error) => {
         // Directly handle the error from the response here
         if (error.status === 400) {
           console.error("Validation Error: Please check the input data.");
+          this.snackBar.open('Validation Error: Please check the input data.', 'Close', {
+            duration: 3000,
+          });
         } else if (error.status === 500) {
           console.error("Server Error: Please try again later.");
+          this.snackBar.open('Server Error: Please try again later.', 'Close', {
+            duration: 3000,
+          });
         } else {
           console.error("Unexpected Error:", error);
+          this.snackBar.open('Unexpected Error: Please try again later.', 'Close', {
+            duration: 3000,
+          });
         }
       }
     });

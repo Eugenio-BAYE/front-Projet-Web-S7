@@ -24,8 +24,22 @@ select {
 }
 
 button {
-  @apply bg-surface0 border-mauve text-rosewater rounded-md px-2 border-2;
+  @apply bg-surface0 border-mauve text-xl text-rosewater rounded-md px-2 border-2;
 }
+
+form {
+  @apply flex flex-col gap-4 items-center bg-mantle border-mauve border-2 rounded-lg py-2 px-4 min-w-[32rem];
+}
+
+mat-form-field {
+  font-family: 'Inter V', sans-serif;
+  @apply w-full text-mauve;
+}
+
+mat-error {
+  @apply text-rosewater text-sm;
+}
+
 
 h1 {
   @apply font-bold text-4xl;

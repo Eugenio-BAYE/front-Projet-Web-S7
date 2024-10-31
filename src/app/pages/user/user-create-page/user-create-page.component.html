@@ -1,32 +1,39 @@
-<p>user-create-page worksa!</p>
-<dir class="flex flex-col items-center "> 
+<dir class="flex flex-col items-center ">
     <!-- TODO: Add style -->
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        Value : {{myForm.value | json}}
         <h1>Hey</h1>
         <h2>Description</h2>
-        <input formControlName="nom">
-        <span *ngIf="myForm.get('nom')?.invalid && myForm.get('nom')?.touched">
-            Your name does not look right
-        </span>
-        <input formControlName="email">
-        <span *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
-            Your email does not look right
-        </span>
+        <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nom">
+            <mat-error *ngIf="myForm.get('nom')?.invalid && myForm.get('nom')?.touched">
+                Your name does not look right
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+                Your email does not look right
+            </mat-error>
+        </mat-form-field>
 
-        <input formControlName="telephone">
-        <span *ngIf="myForm.get('telephone')?.invalid && myForm.get('telephone')?.touched">
-            Your telephone does not look right
-        </span>
+        <mat-form-field>
+            <mat-label>Telephone</mat-label>
+            <input matInput formControlName="telephone">
+            <mat-error *ngIf="myForm.get('telephone')?.invalid && myForm.get('telephone')?.touched">
+                Your telephone does not look right
+            </mat-error>
+        </mat-form-field>
 
-        <input formControlName="adresse">
-        <span *ngIf="myForm.get('adresse')?.invalid && myForm.get('adresse')?.touched">
-            Your adresse does not look right
-        </span>
+        <mat-form-field>
+            <mat-label>Adresse</mat-label>
+            <input matInput formControlName="adresse">
+            <mat-error *ngIf="myForm.get('adresse')?.invalid && myForm.get('adresse')?.touched">
+                Your adresse does not look right
+            </mat-error>
+        </mat-form-field>
 
-        <button type="submit" [disabled]="
-false
-  ">Let's Do it!</button>
-
+        <button type="submit" [disabled]="false">Let's Do it!</button>
     </form>
 </dir>
