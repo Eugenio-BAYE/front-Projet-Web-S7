@@ -1,6 +1,27 @@
-<div class="flex justify-center">
-    <div>
-        <h1>user-create-page works!</h1>
-        <app-form [fields]="formFields" (formSubmit)="onFormSubmit($event)"></app-form>
-    </div>
-</div>
+<p>user-create-page worksa!</p>
+<dir class="flex flex-col items-center ">
+    <form [formGroup]="myForm">
+        Value : {{myForm.value | json}}
+
+  <input formControlName="email">
+  <span *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+      Your email does not look right
+  </span>
+
+  <input formControlName="password">
+  <span *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
+      That password sucks...
+  </span>
+
+  <input formControlName="age">
+  <span *ngIf="myForm.get('age')?.errors?.['min'] && myForm.get('age')?.touched">
+      {{ myForm.get('age')?.errors?.['min'].actual }} is young to use this app kiddo!
+  </span>
+  <span *ngIf="myForm.get('age')?.errors?.['max'] && myForm.get('age')?.touched">
+      {{ myForm.get('age')?.errors?.['max'].actual }} is too old to use this app gramps!
+  </span>
+
+  <button [disabled]="myForm.invalid">Let's Do it!</button>
+
+</form>
+</dir>

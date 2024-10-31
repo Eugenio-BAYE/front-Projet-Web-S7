@@ -8,6 +8,7 @@ export class AuthService {
 
   constructor() {
     this.currentUserRole = 'admin'; // TODO: Replace with actual user role from backend response
+    console.log("Current role is " + this.currentUserRole);
   }
 
   isAdmin(): boolean {
