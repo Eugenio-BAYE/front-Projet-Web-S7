@@ -1,2 +1,6 @@
-<p>user-create-page works!</p>
-<app-user-create-form [formFields]="formFields" (formSubmit)="onFormSubmit($event)"></app-user-create-form>
+<div class="flex justify-center">
+    <div>
+        <h1>user-create-page works!</h1>
+        <app-form [fields]="formFields" (formSubmit)="onFormSubmit($event)"></app-form>
+    </div>
+</div>

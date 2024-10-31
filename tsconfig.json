@@ -5,7 +5,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@constants": ["src/app/shared/constants/index"],
+      "@constants": ["src/app/constants/index"],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

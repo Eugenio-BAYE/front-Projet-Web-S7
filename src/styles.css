@@ -6,9 +6,31 @@
 @tailwind utilities;
 
 
-
-
 body {
   font-family: "Inter V", sans-serif;
-  @apply bg-mantle;
+  @apply bg-base text-text;
+}
+
+label {
+  @apply text-mauve font-semibold my-2;
+}
+
+input {
+  @apply bg-surface1 w-full text-text p-2 rounded-md placeholder:text-text;
+}
+
+select {
+  @apply bg-surface1 w-full text-text p-2 rounded-md placeholder:text-text;
+}
+
+button {
+  @apply bg-surface0 border-mauve text-rosewater rounded-md px-2 border-2;
+}
+
+h1 {
+  @apply font-bold text-4xl;
+}
+
+h2 {
+  @apply font-bold text-xl;
 }

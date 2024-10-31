@@ -1,12 +1,36 @@
-<p>input-field works!</p>
 <!-- input-field.component.html -->
-<div>
+<div class="flex flex-col m-4">
     <label>{{ field.label }}</label>
     <ng-container [ngSwitch]="field.type">
-      <input *ngSwitchCase="'text'" [(ngModel)]="field.value" [attr.placeholder]="field.placeholder" name="{{field.name}}" required>
-      <input *ngSwitchCase="'email'" [(ngModel)]="field.value" type="email" [attr.placeholder]="field.placeholder" name="{{field.name}}" required>
-      <select *ngSwitchCase="'select'" [(ngModel)]="field.value" name="{{field.name}}" required>
-        <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+      <!-- Champ de texte -->
+      <input
+        *ngSwitchCase="'text'"
+        [attr.placeholder]="field.placeholder"
+        [name]="field.name"
+        [required]="field.required"
+        (input)="onValueChange($event.target)"
+      />
+  
+      <!-- Champ email -->
+      <input
+        *ngSwitchCase="'email'"
+        type="email"
+        [attr.placeholder]="field.placeholder"
+        [name]="field.name"
+        [required]="field.required"
+        (input)="onValueChange($event.target)"
+      />
+  
+      <!-- Champ select -->
+      <select
+        *ngSwitchCase="'select'"
+        [name]="field.name"
+        [required]="field.required"
+        (change)="onValueChange($event.target)"
+      >
+        <option *ngFor="let option of field.options" [value]="option">
+          {{ option }}
+        </option>
       </select>
     </ng-container>
   </div>
