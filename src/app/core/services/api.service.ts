@@ -20,4 +20,13 @@ export class ApiService {
     };
     return this.http.post<any>(`${this.apiUrl}/endpoint`, data, httpOptions);
   }
+
+  createUser(data:any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json'
+      })
+    };
+    return this.http.post<any>(`${this.apiUrl}/users`, data, httpOptions);
+  }
 }

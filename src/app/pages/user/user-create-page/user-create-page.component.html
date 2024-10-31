@@ -1,29 +1,32 @@
 <p>user-create-page worksa!</p>
-<dir class="flex flex-col items-center ">
-    <form [formGroup]="myForm"(ngSubmit)="onSubmit()">
+<dir class="flex flex-col items-center "> 
+    <!-- TODO: Add style -->
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         Value : {{myForm.value | json}}
+        <h1>Hey</h1>
+        <h2>Description</h2>
+        <input formControlName="nom">
+        <span *ngIf="myForm.get('nom')?.invalid && myForm.get('nom')?.touched">
+            Your name does not look right
+        </span>
+        <input formControlName="email">
+        <span *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+            Your email does not look right
+        </span>
 
-  <input formControlName="email" >
-  <span *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
-      Your email does not look right
-  </span>
+        <input formControlName="telephone">
+        <span *ngIf="myForm.get('telephone')?.invalid && myForm.get('telephone')?.touched">
+            Your telephone does not look right
+        </span>
 
-  <input formControlName="password">
-  <span *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
-      That password sucks...
-  </span>
+        <input formControlName="adresse">
+        <span *ngIf="myForm.get('adresse')?.invalid && myForm.get('adresse')?.touched">
+            Your adresse does not look right
+        </span>
 
-  <input formControlName="age">
-  <span *ngIf="myForm.get('age')?.errors?.['min'] && myForm.get('age')?.touched">
-      {{ myForm.get('age')?.errors?.['min'].actual }} is young to use this app kiddo!
-  </span>
-  <span *ngIf="myForm.get('age')?.errors?.['max'] && myForm.get('age')?.touched">
-      {{ myForm.get('age')?.errors?.['max'].actual }} is too old to use this app gramps!
-  </span>
-
-  <button type="submit" [disabled]="
+        <button type="submit" [disabled]="
 false
   ">Let's Do it!</button>
 
-</form>
+    </form>
 </dir>

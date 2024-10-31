@@ -24,52 +24,70 @@ export class UserCreatePageComponent {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService
-  ){}
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() { // TODO: Add form validation messages
     this.myForm = this.fb.group({
+      nom: ['', [
+        Validators.required,
+        // Validators.minLength(2),
+        Validators.maxLength(50)
+      ]],
       email: ['', [
         Validators.required,
-        Validators.email
+        // Validators.email,
+        Validators.maxLength(100)
       ]],
-      password: ['', [
-      ]],
-      age: [null, [
+      telephone: ['', [
         Validators.required,
-        Validators.minLength(2), 
-        Validators.min(18), 
-        Validators.max(65)
-      ]]
+        // Validators.pattern('^[0-9]{10}$')
+      ]],
+      adresse: ['', [
+        Validators.required,
+        // Validators.minLength(5),
+        Validators.maxLength(100)
+      ]],
     });
+  }
+  get nom() {
+    return this.myForm.get('nom');
   }
 
   get email() {
     return this.myForm.get('email');
   }
 
-  get password() {
-    return this.myForm.get('password');
+  get telephone() {
+    return this.myForm.get('telephone');
   }
 
-  get age() {
-    return this.myForm.get('age');
+  get adresse() {
+    return this.myForm.get('adresse');
   }
 
   async onSubmit() {
-    console.log("Submitted1");
-    if (true) {
-      console.log("Submitted2");
-      this.apiService.sendData(this.myForm.value).subscribe(
-        (response) => {
-          console.log('Server response:', response);
-        },
-        (error) => {
-          console.log('Error:', error)
-        }
-      );
-    } else {
-      console.log('Form is invalid');
+    const formData = this.myForm.value;
+    console.log(JSON.stringify(formData) + " was submitted");
+    if (false) {
+      return;
     }
+    console.log("Form is valid");
+
+    this.apiService.createUser(formData).subscribe({ // TODO: Use toasts for success and error messages
+      next: (response) => {
+        console.log("User created successfully" + JSON.stringify(response));
+      },
+      error: (error) => {
+        // Directly handle the error from the response here
+        if (error.status === 400) {
+          console.error("Validation Error: Please check the input data.");
+        } else if (error.status === 500) {
+          console.error("Server Error: Please try again later.");
+        } else {
+          console.error("Unexpected Error:", error);
+        }
+      }
+    });
   }
 }
 

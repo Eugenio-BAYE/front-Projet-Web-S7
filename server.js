@@ -11,8 +11,21 @@ server.use((req, res, next) => {
   next();
 });
 
+
+
+server.post('/users', (req, res, next) => {
+  // Simulate a server error with status code 500
+  if (true) {
+    return res.status(500).json({ error: 'Simulated server error' });
+  }
+  // If no error simulation, proceed with normal handling
+  next();
+});
+
+
 server.use(middlewares);
 server.use(router);
+
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
