@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
   selector: 'app-user-create-page',
@@ -20,7 +21,10 @@ export class UserCreatePageComponent {
 
   myForm!: FormGroup;
 
-  constructor(private fb: FormBuilder){}
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiService
+  ){}
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -29,8 +33,6 @@ export class UserCreatePageComponent {
         Validators.email
       ]],
       password: ['', [
-        Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')
       ]],
       age: [null, [
         Validators.required,
@@ -51,6 +53,23 @@ export class UserCreatePageComponent {
 
   get age() {
     return this.myForm.get('age');
+  }
+
+  async onSubmit() {
+    console.log("Submitted1");
+    if (true) {
+      console.log("Submitted2");
+      this.apiService.sendData(this.myForm.value).subscribe(
+        (response) => {
+          console.log('Server response:', response);
+        },
+        (error) => {
+          console.log('Error:', error)
+        }
+      );
+    } else {
+      console.log('Form is invalid');
+    }
   }
 }
 

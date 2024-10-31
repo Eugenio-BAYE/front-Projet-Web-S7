@@ -1,9 +1,9 @@
 <p>user-create-page worksa!</p>
 <dir class="flex flex-col items-center ">
-    <form [formGroup]="myForm">
+    <form [formGroup]="myForm"(ngSubmit)="onSubmit()">
         Value : {{myForm.value | json}}
 
-  <input formControlName="email">
+  <input formControlName="email" >
   <span *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
       Your email does not look right
   </span>
@@ -21,7 +21,9 @@
       {{ myForm.get('age')?.errors?.['max'].actual }} is too old to use this app gramps!
   </span>
 
-  <button [disabled]="myForm.invalid">Let's Do it!</button>
+  <button type="submit" [disabled]="
+false
+  ">Let's Do it!</button>
 
 </form>
 </dir>

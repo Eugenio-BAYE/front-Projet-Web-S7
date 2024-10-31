@@ -44,3 +44,4 @@ compose.yml
 .DS_Store
 Thumbs.db
 compose.yml
+db.json
