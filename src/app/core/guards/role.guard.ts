@@ -12,11 +12,11 @@ export const roleGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
 
   if (
     (requiredRole === 'admin' && authService.isAdmin()) ||
-    (requiredRole === 'manager' && authService.isManager())
+    (requiredRole === 'manager' && authService.isManager() || authService.isAdmin())
   ) {
     return true;
   }
 
-  router.navigate(['/']); // TODO: Redirect to a 403 page and create a 403 page
+  router.navigate(['/403']); // TODO: Redirect to a 403 page and create a 403 page
   return false;
 };

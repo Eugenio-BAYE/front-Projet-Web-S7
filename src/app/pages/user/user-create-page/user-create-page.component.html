@@ -1,8 +1,8 @@
 <dir class="flex flex-col items-center ">
     <!-- TODO: Add style -->
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <h1>Hey</h1>
-        <h2>Description</h2>
+        <h1>New seller</h1>
+        <h2>Provide informations about the new user :</h2>
         <mat-form-field>
             <mat-label>Nom</mat-label>
             <input matInput formControlName="nom">
@@ -34,6 +34,6 @@
             </mat-error>
         </mat-form-field>
 
-        <button type="submit" [disabled]="false">Let's Do it!</button>
+        <button type="submit" [disabled]="false">Create</button>
     </form>
 </dir>
