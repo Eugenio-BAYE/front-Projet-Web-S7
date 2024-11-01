@@ -1,0 +1,37 @@
+<!-- input-field.component.html -->
+<div class="flex flex-col m-4">
+    <label>{{ field.label }}</label>
+    <ng-container [ngSwitch]="field.type">
+      <!-- Champ de texte -->
+      <input
+        *ngSwitchCase="'text'"
+        [attr.placeholder]="field.placeholder"
+        [name]="field.name"
+        [required]="field.required"
+        (input)="onValueChange($event.target)"
+      />
+  
+      <!-- Champ email -->
+      <input
+        *ngSwitchCase="'email'"
+        type="email"
+        [attr.placeholder]="field.placeholder"
+        [name]="field.name"
+        [required]="field.required"
+        (input)="onValueChange($event.target)"
+      />
+  
+      <!-- Champ select -->
+      <select
+        *ngSwitchCase="'select'"
+        [name]="field.name"
+        [required]="field.required"
+        (change)="onValueChange($event.target)"
+      >
+        <option *ngFor="let option of field.options" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </ng-container>
+  </div>
+  

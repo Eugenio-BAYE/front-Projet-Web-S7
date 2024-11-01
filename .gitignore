@@ -38,7 +38,11 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+compose.yml
 
 # System files
 .DS_Store
 Thumbs.db
+compose.yml
+db.json
+db.json
