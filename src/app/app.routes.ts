@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { PagetestComponent } from './pages/pagetest/pagetest.component';
 import { roleGuard } from './core/guards/role.guard';
-import { UserCreatePageComponent } from './pages/user/user-create-page/user-create-page.component';
+import { SellerCreatePageComponent } from './pages/user/seller-create-page/seller-create-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { GameDepositPageComponent } from './pages/game/game-deposit-page/game-deposit-page.component';
 
@@ -25,7 +25,7 @@ export const routes: Routes = [
   // canActivate: [roleGuard],
   // data: { role: 'admin' | 'manager' }
   {
-    path: 'user',
+    path: 'seller',
     canActivate: [roleGuard],
     data: { role: 'admin' },
     children: [
@@ -35,7 +35,7 @@ export const routes: Routes = [
       },
       {
         path: 'create',
-        component: UserCreatePageComponent, // TODO: Create a UserCreateComponent
+        component: SellerCreatePageComponent, // TODO: Create a UserCreateComponent
         canActivate: [roleGuard],
         data: { role: 'admin' },
       },

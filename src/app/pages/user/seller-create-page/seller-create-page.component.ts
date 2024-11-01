@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { NotificationService } from 'src/app/core/services/notification.service';
-import { SellerService } from 'src/app/core/services/api/seller.service';
-import { Seller } from 'src/app/models/seller';
+import { NotificationService } from '../../../core/services/notification.service';
+import { SellerService } from '../../../core/services/api/seller.service';
+import { Seller } from '../../../models/seller';
 
 @Component({
-  selector: 'app-user-create-page',
+  selector: 'app-seller-create-page',
   standalone: true,
   imports: [
     CommonModule,
@@ -16,10 +16,10 @@ import { Seller } from 'src/app/models/seller';
     MatFormFieldModule,
     MatInputModule
   ],
-  templateUrl: './user-create-page.component.html',
-  styleUrl: './user-create-page.component.css'
+  templateUrl: './seller-create-page.component.html',
+  styleUrl: './seller-create-page.component.css'
 })
-export class UserCreatePageComponent {
+export class SellerCreatePageComponent {
 
   myForm!: FormGroup;
 
