@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ApiService } from 'src/app/core/services/api.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { SellerService } from 'src/app/core/services/api/seller.service';
+import { Seller } from 'src/app/models/seller';
 
 @Component({
   selector: 'app-user-create-page',
@@ -69,14 +69,14 @@ export class UserCreatePageComponent {
   }
 
   async onSubmit() {
-    const formData = this.myForm.value;
-    console.log(JSON.stringify(formData) + " was submitted");
+    const seller: Seller = this.myForm.value;
+    console.log(JSON.stringify(seller) + " was submitted");
     if (false) {
       return;
     }
     console.log("Form is valid");
 
-    this.sellerService.createSeller(formData).subscribe({
+    this.sellerService.createSeller(seller).subscribe({
       next: (response) => {
         this.notificationService.showSuccess("User created successfully");
       },
