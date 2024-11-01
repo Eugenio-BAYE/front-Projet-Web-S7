@@ -24,7 +24,7 @@ select {
 }
 
 button {
-  @apply bg-surface0 border-mauve text-2xl text-rosewater rounded-md py-1 px-3 border-2;
+  @apply bg-surface0 ring-mauve text-2xl text-rosewater rounded-md py-1 px-3 ring-1 w-fit;
 }
 
 form {

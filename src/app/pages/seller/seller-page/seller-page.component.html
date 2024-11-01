@@ -1,0 +1,15 @@
+<dir class="flex flex-col items-center">
+    <form [formGroup]="findSeller" (ngSubmit)="onSubmit()">
+        <h1>Find Seller</h1>
+        <h2>Enter email :</h2>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="findSeller.get('email')?.invalid && findSeller.get('email')?.touched">
+                Your email does not look right
+            </mat-error>
+        </mat-form-field>
+        <button type="submit" [disabled]="false">Find</button>
+    </form>
+
+</dir>
