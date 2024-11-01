@@ -5,6 +5,7 @@ import { SellerCreatePageComponent } from './pages/seller/seller-create-page/sel
 import { SellerPageComponent } from './pages/seller/seller-page/seller-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { GameDepositPageComponent } from './pages/game/game-deposit-page/game-deposit-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -25,6 +26,10 @@ export const routes: Routes = [
   // Manage roles with the roleGuard :
   // canActivate: [roleGuard],
   // data: { role: 'admin' | 'manager' }
+  {
+    path:'login',
+    component: LoginPageComponent,
+  },
   {
     path: 'seller',
     canActivate: [roleGuard],
