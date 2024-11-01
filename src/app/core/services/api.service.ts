@@ -12,6 +12,21 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  get<T>(endpoint: string): Observable<T> {
+    return this.http.get<T>(`${this.apiUrl}/${endpoint}`);
+  }
+
+  post<T>(endpoint: string, data: any): Observable<T> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<T>(`${this.apiUrl}/${endpoint}`, data, httpOptions);
+  }
+
+
+  // Test API endpoints :
   sendData(data:any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -21,12 +36,7 @@ export class ApiService {
     return this.http.post<any>(`${this.apiUrl}/endpoint`, data, httpOptions);
   }
 
-  createUser(data:any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':'application/json'
-      })
-    };
-    return this.http.post<any>(`${this.apiUrl}/users`, data, httpOptions);
-  }
+
+
+
 }
