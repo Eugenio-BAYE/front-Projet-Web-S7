@@ -25,6 +25,15 @@ export class ApiService {
     return this.http.post<T>(`${this.apiUrl}/${endpoint}`, data, httpOptions);
   }
 
+  put<T>(endpoint: string, data: any): Observable<T> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.put<T>(`${this.apiUrl}/${endpoint}`, data, httpOptions);
+  }
+
 
   // Test API endpoints :
   sendData(data:any): Observable<any> {

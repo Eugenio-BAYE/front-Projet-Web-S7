@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { PagetestComponent } from './pages/pagetest/pagetest.component';
 import { roleGuard } from './core/guards/role.guard';
-import { SellerCreatePageComponent } from './pages/user/seller-create-page/seller-create-page.component';
+import { SellerCreatePageComponent } from './pages/seller/seller-create-page/seller-create-page.component';
+import { SellerPageComponent } from './pages/seller/seller-page/seller-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { GameDepositPageComponent } from './pages/game/game-deposit-page/game-deposit-page.component';
 
@@ -31,7 +32,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: PagetestComponent, // TODO: Create a UserPageComponent
+        component: SellerPageComponent, // TODO: Create a UserPageComponent
       },
       {
         path: 'create',
