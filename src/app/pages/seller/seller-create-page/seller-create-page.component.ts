@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ApiService } from 'src/app/core/services/api.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationService } from '../../../core/services/notification.service';
+import { SellerService } from '../../../core/services/api/seller.service';
+import { Seller } from '../../../models/seller';
 
 @Component({
-  selector: 'app-user-create-page',
+  selector: 'app-seller-create-page',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,17 +16,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule
   ],
-  templateUrl: './user-create-page.component.html',
-  styleUrl: './user-create-page.component.css'
+  templateUrl: './seller-create-page.component.html',
+  styleUrl: './seller-create-page.component.css'
 })
-export class UserCreatePageComponent {
+export class SellerCreatePageComponent {
 
   myForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService,
-    private snackBar: MatSnackBar
+    private sellerService: SellerService,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnInit() { // TODO: Add form validation messages
@@ -68,37 +69,25 @@ export class UserCreatePageComponent {
   }
 
   async onSubmit() {
-    const formData = this.myForm.value;
-    console.log(JSON.stringify(formData) + " was submitted");
+    const seller: Seller = this.myForm.value;
+    console.log(JSON.stringify(seller) + " was submitted");
     if (false) {
       return;
     }
     console.log("Form is valid");
 
-    this.apiService.createUser(formData).subscribe({ // TODO: Use toasts for success and error messages
+    this.sellerService.createSeller(seller).subscribe({
       next: (response) => {
-        console.log("User created successfully" + JSON.stringify(response));
-        this.snackBar.open('User created successfully', 'Close', {
-          duration: 3000,
-        });
+        this.notificationService.showSuccess("User created successfully");
       },
       error: (error) => {
-        // Directly handle the error from the response here
         if (error.status === 400) {
-          console.error("Validation Error: Please check the input data.");
-          this.snackBar.open('Validation Error: Please check the input data.', 'Close', {
-            duration: 3000,
-          });
+          this.notificationService.showError(error);
         } else if (error.status === 500) {
-          console.error("Server Error: Please try again later.");
-          this.snackBar.open('Server Error: Please try again later.', 'Close', {
-            duration: 3000,
-          });
+          this.notificationService.showError(error);
         } else {
           console.error("Unexpected Error:", error);
-          this.snackBar.open('Unexpected Error: Please try again later.', 'Close', {
-            duration: 3000,
-          });
+          this.notificationService.showError(error);
         }
       }
     });

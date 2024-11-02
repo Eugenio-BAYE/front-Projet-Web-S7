@@ -1,9 +1,15 @@
 import { Routes } from '@angular/router';
 import { PagetestComponent } from './pages/pagetest/pagetest.component';
 import { roleGuard } from './core/guards/role.guard';
-import { UserCreatePageComponent } from './pages/user/user-create-page/user-create-page.component';
+import { SellerCreatePageComponent } from './pages/seller/seller-create-page/seller-create-page.component';
+import { SellerPageComponent } from './pages/seller/seller-page/seller-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { GameDepositPageComponent } from './pages/game/game-deposit-page/game-deposit-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ManagePageComponent } from './pages/manage-page/manage-page.component';
+import { ManagerCreatePageComponent } from './pages/manager/manager-create-page/manager-create-page.component';
+import { ManagerManagePageComponent } from './pages/manager/manager-manage-page/manager-manage-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -13,7 +19,7 @@ export const routes: Routes = [
   },
   {
     path: '404',
-    component: PagetestComponent, // TODO: Create a 404 page
+    component: NotFoundPageComponent,
   },
   // --- Test routes ---
   {
@@ -25,17 +31,42 @@ export const routes: Routes = [
   // canActivate: [roleGuard],
   // data: { role: 'admin' | 'manager' }
   {
-    path: 'user',
+    path: 'login',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'manage',
+    component: ManagePageComponent,
+    canActivate: [roleGuard],
+    data: { role: 'manager' },
+  },
+  {
+    path: 'manager',
     canActivate: [roleGuard],
     data: { role: 'admin' },
     children: [
       {
+        path: 'create',
+        component: ManagerCreatePageComponent
+      },
+      {
+        path: 'manage',
+        component: ManagerManagePageComponent
+      },
+    ],
+  },
+  {
+    path: 'seller',
+    canActivate: [roleGuard],
+    data: { role: 'manager' },
+    children: [
+      {
         path: '',
-        component: PagetestComponent, // TODO: Create a UserPageComponent
+        component: SellerPageComponent, // TODO: Create a UserPageComponent
       },
       {
         path: 'create',
-        component: UserCreatePageComponent, // TODO: Create a UserCreateComponent
+        component: SellerCreatePageComponent, // TODO: Create a UserCreateComponent
         canActivate: [roleGuard],
         data: { role: 'admin' },
       },
