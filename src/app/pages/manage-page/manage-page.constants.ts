@@ -38,7 +38,7 @@ export const MANAGE_ITEMS: ManageItem[] = [
     },
     {
         label : 'Manage Buyer',
-        route : 'buyer',
+        route : 'buyer/view',
         isImportant : true,
     },
     {
@@ -48,7 +48,7 @@ export const MANAGE_ITEMS: ManageItem[] = [
     },
     {
         label : 'Manage Manager',
-        route : 'manager',
+        route : 'manager/manage',
         isImportant : true,
     },
     {
