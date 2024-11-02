@@ -54,3 +54,13 @@ h1 {
 h2 {
   @apply font-bold text-xl;
 }
+
+@layer utilities {
+  .nav-link {
+    @apply self-center place-content-center px-4;
+  }
+
+  .nav-label {
+    @apply font-normal rounded-2xl ring-overlay0 px-3 py-1 transition ease-in-out hover:ring-1  hover:bg-overlay0 hover:bg-opacity-20 border-0 ring-0;
+  }
+}
