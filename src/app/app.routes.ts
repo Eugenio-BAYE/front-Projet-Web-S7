@@ -6,6 +6,7 @@ import { SellerPageComponent } from './pages/seller/seller-page/seller-page.comp
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { GameDepositPageComponent } from './pages/game/game-deposit-page/game-deposit-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ManagePageComponent } from './pages/manage-page/manage-page.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -29,6 +30,10 @@ export const routes: Routes = [
   {
     path:'login',
     component: LoginPageComponent,
+  },
+  {
+    path:'manage',
+    component: ManagePageComponent,
   },
   {
     path: 'seller',
