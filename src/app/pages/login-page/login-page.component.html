@@ -1,0 +1,33 @@
+<div class="flex flex-col items-center">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h1>Login</h1>
+
+        <h2>Enter email:</h2>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                Your email does not look right
+            </mat-error>
+        </mat-form-field>
+
+        <h2>Enter password:</h2>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                Password is required
+            </mat-error>
+        </mat-form-field>
+
+        <h2>Select Role:</h2>
+        <div formControlName="userType" class="flex space-x-4">
+            <mat-radio-group formControlName="userType">
+                <mat-radio-button value="admin">Admin</mat-radio-button>
+                <mat-radio-button value="manager">Manager</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+</div>
