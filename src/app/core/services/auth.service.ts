@@ -11,6 +11,7 @@ interface LoginResponse {
 })
 
 export class AuthService {
+  // TODO: Check if thoses are stored when refreshing page. If not use local storage
   private currentUserRole: 'admin' | 'manager' | null = null;
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private tokenExpirationTimer: any;
