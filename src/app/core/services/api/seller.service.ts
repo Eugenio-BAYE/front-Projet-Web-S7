@@ -8,13 +8,13 @@ import { Seller } from 'src/app/models/seller';
 })
 export class SellerService {
 
-  private endpoint = 'utilisateurs';
+  private endpoint = 'vendeurs';
 
   constructor(private apiService: ApiService) {
   }
 
   createSeller(seller: Seller): Observable<Seller> {
-    return this.apiService.post<Seller>(this.endpoint, seller);
+    return this.apiService.post<Seller>(`${this.endpoint}/register`, seller, {withCredentials: true});
   }
 
   getSellerByEmail(email: string): Observable<Seller> {
