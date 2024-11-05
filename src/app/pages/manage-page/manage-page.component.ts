@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MANAGE_ITEMS } from './manage-page.constants';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-manage-page',
