@@ -49,7 +49,10 @@ export class NotificationService {
         return parsedError.errors.map((err: any) => err.msg).join(', ');
       } else if (error.msg) {
         return error.msg;
-      } else {
+      } else if (error.error) {
+        return error.error;
+      }
+      else {
         return 'An unexpected error occurred'; // Message par défaut
       }
     }

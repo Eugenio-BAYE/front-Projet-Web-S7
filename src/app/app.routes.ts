@@ -10,6 +10,7 @@ import { ManagePageComponent } from './pages/manage-page/manage-page.component';
 import { ManagerCreatePageComponent } from './pages/manager/manager-create-page/manager-create-page.component';
 import { ManagerManagePageComponent } from './pages/manager/manager-manage-page/manager-manage-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { EditorCreatePageComponent } from './pages/editor/editor-create-page/editor-create-page.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -54,6 +55,17 @@ export const routes: Routes = [
         component: ManagerManagePageComponent
       },
     ],
+  },
+  {
+    path: 'editor',
+    canActivate: [roleGuard],
+    data: { role: 'manager' },
+    children: [
+      {
+        path: 'create',
+        component: EditorCreatePageComponent,
+      }
+    ]
   },
   {
     path: 'seller',

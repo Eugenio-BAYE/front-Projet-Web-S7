@@ -18,7 +18,7 @@ export class SellerService {
   }
 
   getSellerByEmail(email: string): Observable<Seller> {
-    return this.apiService.get<Seller>(`${this.endpoint}?email=${email}`); // TODO: Change ?email to= /
+    return this.apiService.get<Seller>(`${this.endpoint}/${email}`); // TODO: Change ?email to= /
   }
 
   getSellerStock(idSession: string, idVendeur: string, numPage?: number): Observable<any> {

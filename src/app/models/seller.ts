@@ -1,7 +1,7 @@
 import { User } from "./user";
 
 export interface Seller {
-    id?: number;
+    id?: any;
     nom: string;
     email: string;
     telephone: string;
