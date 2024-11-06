@@ -21,5 +21,4 @@ export class EditorService {
   getEditors(): Observable<Editor[]> {
     return this.apiService.get<Editor[]>(`${this.endpoint}/`);
   }
-  
 }
