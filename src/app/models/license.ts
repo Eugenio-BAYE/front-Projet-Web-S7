@@ -1,5 +1,7 @@
+import { Editor } from "./editor";
+
 export interface License {
     id?: any;
     nom: string;
-    editeur_id?: any;
+    editeur_id?: Editor["id"];
 }

@@ -1,5 +1,3 @@
-import { User } from "./user";
-
 export interface Seller {
     id?: any;
     nom: string;
