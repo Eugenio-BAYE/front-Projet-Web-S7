@@ -1,0 +1,63 @@
+<div class="flex flex-col items-center">
+    <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+      <h1>Déposer un Jeu</h1>
+      <h2>Fournissez les informations sur le jeu</h2>
+  
+      <!-- Sélection de la licence -->
+      <mat-form-field appearance="fill">
+        <mat-label>Sélectionner une licence</mat-label>
+        <mat-select formControlName="licence_id">
+          <mat-option *ngFor="let license of licenses" [value]="license.id">
+            {{ license.nom }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="gameForm.get('licence_id')?.invalid && gameForm.get('licence_id')?.touched">
+          Veuillez sélectionner une licence
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Email du vendeur -->
+      <mat-form-field appearance="fill">
+        <mat-label>Email du vendeur</mat-label>
+        <input matInput formControlName="seller_email" type="email">
+        <mat-error *ngIf="gameForm.get('seller_email')?.invalid && gameForm.get('seller_email')?.touched">
+          Veuillez fournir un email valide
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Champ pour le prix -->
+      <mat-form-field>
+        <mat-label>Prix</mat-label>
+        <input matInput formControlName="prix" type="number">
+        <mat-error *ngIf="gameForm.get('prix')?.invalid && gameForm.get('prix')?.touched">
+          Veuillez entrer un prix valide
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Champ pour la quantité -->
+      <mat-form-field>
+        <mat-label>Quantité</mat-label>
+        <input matInput formControlName="quantity" type="number">
+        <mat-error *ngIf="gameForm.get('quantity')?.invalid && gameForm.get('quantity')?.touched">
+          Veuillez entrer une quantité valide
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Option pour afficher le code promo -->
+      <mat-checkbox formControlName="hasPromoCode">J'ai un code promo</mat-checkbox>
+  
+      <!-- Champ pour le code promo, affiché uniquement si "hasPromoCode" est coché -->
+      <mat-form-field *ngIf="gameForm.get('hasPromoCode')?.value">
+        <mat-label>Code Promo</mat-label>
+        <input matInput formControlName="code_promo" type="text">
+        <mat-error *ngIf="gameForm.get('code_promo')?.invalid && gameForm.get('code_promo')?.touched">
+          Veuillez entrer un code promo valide
+        </mat-error>
+      </mat-form-field>
+  
+      <button mat-raised-button type="submit" [disabled]="gameForm.invalid">
+        Déposer Jeu
+      </button>
+    </form>
+  </div>
+  

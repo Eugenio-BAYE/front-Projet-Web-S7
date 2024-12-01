@@ -30,6 +30,11 @@ export class NotificationService {
     function extractErrorMessage(error: any): string {
       let parsedError;
     
+      // Vérifie si `error.error` est une chaîne de caractères et la retourne directement
+      if (typeof error.error === 'string') {
+        return error.error; // Par exemple, "Token invalide ou expiré."
+      }
+    
       // Tente de parser `error.error` si c'est une chaîne JSON
       if (typeof error.error === 'string') {
         try {
@@ -39,6 +44,13 @@ export class NotificationService {
         }
       } else {
         parsedError = error.error;
+      }
+    
+      if (error.message) {
+        return error.message;
+      }
+      if (error.body) {
+        return error.body;
       }
     
       // Accède aux messages dans `parsedError` si disponibles
@@ -51,19 +63,19 @@ export class NotificationService {
         return error.msg;
       } else if (error.error) {
         return error.error;
-      }
-      else {
+      } else {
         return 'An unexpected error occurred'; // Message par défaut
       }
     }
     
-    
+
+
     const message = extractErrorMessage(error);
     this.snackBar.open(message, 'Fermer', {
       duration: 3000,
       panelClass: ['error-snackbar']
     });
   }
-  
+
 }
 

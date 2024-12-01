@@ -22,5 +22,8 @@ export class LicenseService {
     console.log(payload);
     return this.apiService.post<License>(`${this.endpoint}/`, payload, { withCredentials: true });
   }
-  
+
+  getLicenses(): Observable<License[]> {
+    return this.apiService.get<License[]>(this.endpoint);
+  }
 }

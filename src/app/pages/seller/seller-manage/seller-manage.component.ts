@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import { Form, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { SellerService } from 'src/app/core/services/api/seller.service';
-import { NotificationService } from 'src/app/core/services/notification.service';
+import { SellerService } from '../../../core/services/api/seller.service';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
-  selector: 'app-seller-page',
+  selector: 'app-seller-manage',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,10 +15,10 @@ import { NotificationService } from 'src/app/core/services/notification.service'
     MatFormFieldModule,
     MatInputModule
   ],
-  templateUrl: './seller-page.component.html',
-  styleUrl: './seller-page.component.css'
+  templateUrl: './seller-manage.component.html',
+  styleUrl: './seller-manage.component.css'
 })
-export class SellerPageComponent {
+export class SellerManageComponent {
 
   findSeller!: FormGroup;
 

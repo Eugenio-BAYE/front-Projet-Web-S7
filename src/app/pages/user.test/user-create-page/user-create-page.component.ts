@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormComponent } from 'src/app/shared/components/form/form.component';
 
 @Component({
-  selector: 'app-seller-create-page',
+  selector: 'app-seller-create',
   standalone: true,
   imports: [
     FormComponent,

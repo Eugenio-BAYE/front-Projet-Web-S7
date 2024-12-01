@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
 import { PagetestComponent } from './pages/pagetest/pagetest.component';
 import { roleGuard } from './core/guards/role.guard';
-import { SellerCreatePageComponent } from './pages/seller/seller-create-page/seller-create-page.component';
-import { SellerPageComponent } from './pages/seller/seller-page/seller-page.component';
+import { SellerCreateComponent } from './pages/seller/seller-create/seller-create.component';
+import { SellerManageComponent } from './pages/seller/seller-manage/seller-manage.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { GameDepositPageComponent } from './pages/game/game-deposit-page/game-deposit-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ManagePageComponent } from './pages/manage-page/manage-page.component';
 import { ManagerCreatePageComponent } from './pages/manager/manager-create-page/manager-create-page.component';
@@ -12,6 +11,8 @@ import { ManagerManagePageComponent } from './pages/manager/manager-manage-page/
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { EditorCreatePageComponent } from './pages/editor/editor-create-page/editor-create-page.component';
 import { LicenseCreatePageComponent } from './pages/license/license-create-page/license-create-page.component';
+import { GameDepositComponent } from './pages/game/game-deposit/game-deposit.component';
+import { SellerComponent } from './pages/seller/seller.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -86,11 +87,15 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: SellerPageComponent, // TODO: Create a UserPageComponent
+        component: SellerComponent,
+      },
+      {
+        path: 'find',
+        component: SellerManageComponent, // TODO: Create a UserPageComponent
       },
       {
         path: 'create',
-        component: SellerCreatePageComponent, // TODO: Create a UserCreateComponent
+        component: SellerCreateComponent, // TODO: Create a UserCreateComponent
         canActivate: [roleGuard],
         data: { role: 'admin' },
       },
@@ -109,7 +114,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'deposit',
-        component: GameDepositPageComponent
+        component: GameDepositComponent
       },
     ],
   },

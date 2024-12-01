@@ -8,7 +8,7 @@ import { SellerService } from '../../../core/services/api/seller.service';
 import { Seller } from '../../../models/seller';
 
 @Component({
-  selector: 'app-seller-create-page',
+  selector: 'app-seller-create',
   standalone: true,
   imports: [
     CommonModule,
@@ -16,10 +16,10 @@ import { Seller } from '../../../models/seller';
     MatFormFieldModule,
     MatInputModule
   ],
-  templateUrl: './seller-create-page.component.html',
-  styleUrl: './seller-create-page.component.css'
+  templateUrl: './seller-create.component.html',
+  styleUrl: './seller-create.component.css'
 })
-export class SellerCreatePageComponent {
+export class SellerCreateComponent {
 
   myForm!: FormGroup;
 

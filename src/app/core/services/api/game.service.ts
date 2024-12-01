@@ -16,7 +16,7 @@ export class GameService {
     private apiService: ApiService
   ) { }
 
-  createGame(game: Game, quantityInt : number, code_promo : number, seller : Seller): Observable<Game> {
+  createGame(game: Game, quantityInt : number, code_promo : number | null, seller : Seller): Observable<Game> {
     const payload = {
       quantite: quantityInt,
       licence: game.licence_id,
@@ -26,6 +26,6 @@ export class GameService {
     };
 
     console.log(payload);
-    return this.apiService.post<Game>(`${this.endpoint}/`, payload, { withCredentials: true });
+    return this.apiService.post<Game>(`${this.endpoint}/deposer`, payload, { withCredentials: true });
   }
 }
