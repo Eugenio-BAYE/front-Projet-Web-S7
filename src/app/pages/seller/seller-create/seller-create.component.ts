@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NotificationService } from '../../../core/services/notification.service';
@@ -19,39 +19,34 @@ import { Seller } from '../../../models/seller';
   templateUrl: './seller-create.component.html',
   styleUrl: './seller-create.component.css'
 })
-export class SellerCreateComponent {
 
-  myForm!: FormGroup;
+export class SellerCreateComponent implements OnInit {
+
+  myForm = new FormGroup({
+    nom: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(50)
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(100)
+    ]),
+    telephone: new FormControl('', [
+      Validators.required,
+    ]),
+    adresse: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(100)
+    ]),
+  });
 
   constructor(
-    private fb: FormBuilder,
     private sellerService: SellerService,
     private notificationService: NotificationService,
   ) { }
 
-  ngOnInit() { // TODO: Add form validation messages
-    this.myForm = this.fb.group({
-      nom: ['', [
-        Validators.required,
-        // Validators.minLength(2),
-        Validators.maxLength(50)
-      ]],
-      email: ['', [
-        Validators.required,
-        // Validators.email,
-        Validators.maxLength(100)
-      ]],
-      telephone: ['', [
-        Validators.required,
-        // Validators.pattern('^[0-9]{10}$')
-      ]],
-      adresse: ['', [
-        Validators.required,
-        // Validators.minLength(5),
-        Validators.maxLength(100)
-      ]],
-    });
-  }
+  ngOnInit() { }
+
   get nom() {
     return this.myForm.get('nom');
   }
@@ -69,7 +64,12 @@ export class SellerCreateComponent {
   }
 
   async onSubmit() {
-    const seller: Seller = this.myForm.value;
+    const seller: Seller = {
+      nom: this.myForm.value.nom || '',
+      email: this.myForm.value.email || '',
+      telephone: this.myForm.value.telephone || '',
+      adresse: this.myForm.value.adresse || ''
+    };
     console.log(JSON.stringify(seller) + " was submitted");
     if (false) {
       return;
@@ -93,4 +93,3 @@ export class SellerCreateComponent {
     });
   }
 }
-
