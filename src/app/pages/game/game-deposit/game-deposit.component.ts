@@ -72,15 +72,17 @@ export class GameDepositComponent implements OnInit{
     const game = {
       licence_id: formValue.licence_id,
       prix: formValue.prix,
-      depot_id: formValue.depot_id
+      depot_id: formValue.depot_id,
     };
 
-    const quantityInt = formValue.quantity;
+    const games = [game];
+
+    const quantity = [formValue.quantity];
     const code_promo = formValue.code_promo;
     this.sellerService.getSellerByEmail(formValue?.seller_email).subscribe({
       next: (seller: Seller) => {
         console.log(seller);
-        this.gameService.createGame(game, quantityInt, code_promo, seller).subscribe({
+        this.gameService.deposerJeu(games, quantity, code_promo, seller).subscribe({
           next: () => {
             this.notificationService.showSuccess('Jeu déposé avec succès');
           },

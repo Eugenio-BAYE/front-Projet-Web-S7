@@ -16,13 +16,13 @@ export class GameService {
     private apiService: ApiService
   ) { }
 
-  createGame(game: Game, quantityInt : number, code_promo : number | null, seller : Seller): Observable<Game> {
+  deposerJeu(games: Game[], quantity: number[], code_promo : number | null, seller : Seller): Observable<Game> {
     const payload = {
-      quantite: quantityInt,
-      licence: game.licence_id,
-      prix: game.prix,
-      code_promo: code_promo,
-      id_vendeur: seller.id,
+      quantite: quantity, // Quantité de jeux
+      licence: games.map(game => game.licence_id), // Récupère les IDs de licence
+      prix: games.map(game => game.prix), // Récupère les prix
+      code_promo: code_promo || null, // Peut être null ou une chaîne
+      id_vendeur: seller.id, // ID du vendeur
     };
 
     console.log(payload);

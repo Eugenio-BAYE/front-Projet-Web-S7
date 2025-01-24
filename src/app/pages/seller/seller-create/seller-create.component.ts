@@ -70,6 +70,7 @@ export class SellerCreateComponent implements OnInit {
       telephone: this.myForm.value.telephone || '',
       adresse: this.myForm.value.adresse || ''
     };
+    // TODO : Remove the debug log
     console.log(JSON.stringify(seller) + " was submitted");
     if (false) {
       return;

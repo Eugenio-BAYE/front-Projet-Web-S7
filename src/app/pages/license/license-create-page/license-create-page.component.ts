@@ -25,6 +25,7 @@
   })
   export class LicenseCreatePageComponent implements OnInit {
 
+
     myForm!: FormGroup;
     editors: Editor[] = [];
 
@@ -36,6 +37,8 @@
     ) { }
 
     ngOnInit() {
+
+      console.log("LicenseCreatePageComponent");
       this.myForm = this.fb.group({
         nom: ['', [
           Validators.required,

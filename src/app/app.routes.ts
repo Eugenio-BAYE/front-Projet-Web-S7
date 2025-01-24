@@ -13,6 +13,7 @@ import { EditorCreatePageComponent } from './pages/editor/editor-create-page/edi
 import { LicenseCreatePageComponent } from './pages/license/license-create-page/license-create-page.component';
 import { GameDepositComponent } from './pages/game/game-deposit/game-deposit.component';
 import { SellerComponent } from './pages/seller/seller.component';
+import { SessionCreatePageComponent } from './pages/session/session-create-page/session-create.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -42,6 +43,17 @@ export const routes: Routes = [
     component: ManagePageComponent,
     canActivate: [roleGuard],
     data: { role: 'manager' },
+  },
+  {
+    path : 'session',
+    children: [
+      {
+        path: 'create',
+        canActivate: [roleGuard],
+        data: { role: 'gestionnaire' },
+        component: SessionCreatePageComponent
+      }
+    ]
   },
   {
     path: 'manager',
