@@ -16,7 +16,7 @@ export class GameService {
     private apiService: ApiService
   ) { }
 
-  deposerJeu(games: Game[], quantity: number[], code_promo : number | null, seller : Seller): Observable<Game> {
+  deposerJeu(games: Game[], quantity: number[], code_promo : string | null, seller : Seller): Observable<Game> {
     const payload = {
       quantite: quantity, // Quantité de jeux
       licence: games.map(game => game.licence_id), // Récupère les IDs de licence
