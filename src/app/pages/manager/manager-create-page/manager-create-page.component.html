@@ -1,1 +1,78 @@
-<p>manager-create-page works!</p>
+<dir class="flex flex-col items-center">
+    <form [formGroup]="managerCreateForm" (ngSubmit)="onSubmit()">
+        <!-- Greetings -->
+        <h1>New Manager</h1>
+        <h2>Provide informations about the new manager</h2>
+        <!-- Name field -->
+        <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nom">
+            <mat-error
+                *ngIf="managerCreateForm.get('nom')?.hasError('required') && managerCreateForm.get('nom')?.touched">
+                Name is required
+            </mat-error>
+            <mat-error
+                *ngIf="managerCreateForm.get('nom')?.hasError('minlength') && managerCreateForm.get('nom')?.touched">
+                Name must be at least 3 characters long
+            </mat-error>
+            <mat-error
+                *ngIf="managerCreateForm.get('nom')?.hasError('maxlength') && managerCreateForm.get('nom')?.touched">
+                Name cannot be more than 50 characters long
+            </mat-error>
+            <mat-error
+                *ngIf="managerCreateForm.get('nom')?.hasError('pattern') && managerCreateForm.get('nom')?.touched">
+                Name must contain only letters
+            </mat-error>
+        </mat-form-field>
+        <!-- Email field -->
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-error *ngIf="managerCreateForm.get('email')?.hasError('required') && managerCreateForm.get('email')?.touched">
+                Email is required   
+            </mat-error>
+            <mat-error *ngIf="managerCreateForm.get('email')?.hasError('maxLength') && managerCreateForm.get('email')?.touched">
+                Email must not be more than 100 characters long
+            </mat-error>
+            <mat-error *ngIf="managerCreateForm.get('email')?.hasError('email') && managerCreateForm.get('email')?.touched">
+                Email is not valid
+            </mat-error>
+        </mat-form-field> 
+        <!-- Cellphone field -->
+        <mat-form-field>
+            <mat-label>Telephone</mat-label>
+            <input matInput formControlName="telephone">
+            <mat-error
+                *ngIf="managerCreateForm.get('telephone')?.hasError('required') && managerCreateForm.get('telephone')?.touched">
+                Cellphone number is required
+            </mat-error>
+            <mat-error
+                *ngIf="managerCreateForm.get('telephone')?.hasError('pattern') && managerCreateForm.get('telephone')?.touched">
+                Cellphone number must contain exactly 10 numbers
+            </mat-error>
+        </mat-form-field>
+        <!-- Address field -->
+        <mat-form-field>
+            <mat-label>Adresse</mat-label>
+            <input matInput formControlName="adresse">
+            <mat-error
+                *ngIf="managerCreateForm.get('adresse')?.hasError('required') && managerCreateForm.get('adresse')?.touched">
+                Address is required
+            </mat-error>
+        </mat-form-field>
+        <!-- Temporary password field -->
+        <mat-form-field>
+            <mat-label>Temporary Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error
+                *ngIf="managerCreateForm.get('password')?.hasError('required') && managerCreateForm.get('password')?.touched">
+                Temporary password is required
+            </mat-error>    
+            <mat-error
+                *ngIf="managerCreateForm.get('password')?.hasError('minlength') && managerCreateForm.get('password')?.touched">
+                Temporary password must be at least 6 characters long
+            </mat-error>
+        </mat-form-field>
+        <!-- Submit button -->
+        <button type="submit" [disabled]="managerCreateForm.invalid">Create</button>
+    </form>

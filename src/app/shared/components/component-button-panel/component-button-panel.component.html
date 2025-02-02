@@ -1,0 +1,18 @@
+<div class="flex flex-col items-center">
+    <!-- List of buttons to select components -->
+    <div class="flex w-fit place-content-center text-text ring-1 space-x-2 ring-surface0 rounded-full p-2 mt-4">
+        <!-- Boutons pour sélectionner les composants -->
+        <button *ngFor="let navItem of ComponentNavItems" (click)="setActiveComponent(navItem)" class="componentNav"
+            [class.active]="activeComponent === navItem">
+            <span class="">
+                {{ navItem.label }}
+            </span>
+        </button>
+    </div>
+    <!-- Display selected component -->
+    <div class="dynamic-content">
+        <ng-container *ngIf="activeComponent">
+            <ng-container *ngComponentOutlet="activeComponent!.component"></ng-container>
+        </ng-container>
+    </div>
+</div>

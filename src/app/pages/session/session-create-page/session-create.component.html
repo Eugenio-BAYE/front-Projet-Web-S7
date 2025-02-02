@@ -1,0 +1,64 @@
+<div class="flex flex-col items-center">
+    <form [formGroup]="sessionCreateForm" (ngSubmit)="onSubmit()">
+      <h1>Create Session</h1>
+      <h2>Provide the details of the new session</h2>
+  
+      <!-- Date de début -->
+      <mat-form-field>
+        <mat-label>Date de début</mat-label>
+        <input matInput type="date" formControlName="date_debut">
+        <mat-error *ngIf="date_debut?.hasError('required') && date_debut?.touched">
+          Start date is required.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Date de fin -->
+      <mat-form-field>
+        <mat-label>Date de fin</mat-label>
+        <input matInput type="date" formControlName="date_fin">
+        <mat-error *ngIf="date_fin?.hasError('required') && date_fin?.touched">
+          End date is required.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Valeur de la commission -->
+      <mat-form-field>
+        <mat-label>Valeur de la commission</mat-label>
+        <input matInput type="number" formControlName="valeur_commission">
+        <mat-error *ngIf="valeur_commission?.hasError('required') && valeur_commission?.touched">
+          Commission value is required.
+        </mat-error>
+        <mat-error *ngIf="valeur_commission?.hasError('min') && valeur_commission?.touched">
+          Commission value must be positive.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Commission en pourcentage -->
+      <mat-checkbox formControlName="commission_en_pourcentage">
+        Commission in percentage
+      </mat-checkbox>
+  
+      <!-- Valeur des frais de dépôt -->
+      <mat-form-field>
+        <mat-label>Valeur des frais de dépôt</mat-label>
+        <input matInput type="number" formControlName="valeur_frais_depot">
+        <mat-error *ngIf="valeur_frais_depot?.hasError('required') && valeur_frais_depot?.touched">
+          Deposit fee value is required.
+        </mat-error>
+        <mat-error *ngIf="valeur_frais_depot?.hasError('min') && valeur_frais_depot?.touched">
+          Deposit fee value must be positive.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Frais de dépôt en pourcentage -->
+      <mat-checkbox formControlName="frais_depot_en_pourcentage">
+        Deposit fee in percentage
+      </mat-checkbox>
+  
+      <!-- Bouton de soumission -->
+      <button type="submit" mat-raised-button color="primary" [disabled]="sessionCreateForm.invalid">
+        Create
+      </button>
+    </form>
+  </div>
+  

@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'awi';
+  title = 'MonoPolytech';
 
   constructor() {
     console.log(

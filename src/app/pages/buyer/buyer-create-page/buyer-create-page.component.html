@@ -1,1 +1,44 @@
-<p>buyer-create-page works!</p>
+<div class="flex flex-col items-center">
+    <h1>Créer un Compte Acheteur</h1>
+  
+    <form [formGroup]="buyerForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Nom -->
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom">
+        <mat-error *ngIf="buyerForm.get('nom')?.invalid && buyerForm.get('nom')?.touched">
+          Veuillez entrer un nom valide (au moins 2 caractères).
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Email -->
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+        <mat-error *ngIf="buyerForm.get('email')?.invalid && buyerForm.get('email')?.touched">
+          Veuillez entrer un email valide.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Téléphone -->
+      <mat-form-field>
+        <mat-label>Téléphone</mat-label>
+        <input matInput formControlName="telephone">
+        <mat-error *ngIf="buyerForm.get('telephone')?.invalid && buyerForm.get('telephone')?.touched">
+          Veuillez entrer un numéro de téléphone valide (10 chiffres).
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Adresse (optionnelle) -->
+      <mat-form-field>
+        <mat-label>Adresse</mat-label>
+        <input matInput formControlName="adresse">
+      </mat-form-field>
+  
+      <button mat-raised-button type="submit" [disabled]="buyerForm.invalid">
+        Créer le compte
+      </button>
+    </form>
+  </div>
+  

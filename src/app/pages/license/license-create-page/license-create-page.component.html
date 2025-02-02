@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <h1>Nouvelle Licence</h1>
+      <h2>Fournissez les informations sur la licence</h2>
+  
+      <!-- Champ pour le nom de la licence -->
+      <mat-form-field>
+        <mat-label>Nom de la licence</mat-label>
+        <input matInput formControlName="nom">
+        <mat-error *ngIf="myForm.get('nom')?.invalid && myForm.get('nom')?.touched">
+          Ce nom de licence ne semble pas correct
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Sélection d'un éditeur -->
+       <!-- TODO: Faire une meilleure recherche de l'éditeur (mat-autocomplete?)-->
+      <mat-form-field appearance="fill">
+        <mat-label>Sélectionner un éditeur</mat-label>
+        <mat-select formControlName="selectedEditor">
+          <mat-option *ngFor="let editor of editors" [value]="editor.id">
+            {{ editor.nom }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button type="submit" [disabled]="false">
+        Créer Licence
+      </button>
+    </form>
+  </div>
+  

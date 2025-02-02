@@ -23,8 +23,12 @@ select {
   @apply bg-surface1 w-full text-text p-2 rounded-md placeholder:text-text;
 }
 
-button {
+button.primary {
   @apply bg-surface0 ring-mauve text-2xl text-rosewater rounded-md py-1 px-3 ring-1 w-fit;
+}
+
+button.componentNav {
+  @apply text-xl text-text font-bold px-3 py-1 rounded-2xl ring-overlay0 transition ease-in-out hover:ring-1 hover:bg-overlay0 hover:bg-opacity-20
 }
 
 form {
