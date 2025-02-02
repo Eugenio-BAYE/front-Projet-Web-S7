@@ -15,6 +15,7 @@ import { GameDepositComponent } from './pages/game/game-deposit/game-deposit.com
 import { SellerComponent } from './pages/seller/seller.component';
 import { SessionCreatePageComponent } from './pages/session/session-create-page/session-create.component';
 import { StockToSaleComponent } from './pages/game/stock-to-sale/stock-to-sale.component';
+import { GameSalePageComponent } from './pages/game/game-sale-page/game-sale-page.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -132,7 +133,12 @@ export const routes: Routes = [
       {
         path: 'stockToSale',
         component: StockToSaleComponent
+      },
+      {
+        path: 'sale',
+        component: GameSalePageComponent
       }
+
     ],
   },
   // --- 404 route ---

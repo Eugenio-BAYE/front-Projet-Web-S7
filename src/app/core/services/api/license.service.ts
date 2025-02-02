@@ -26,4 +26,8 @@ export class LicenseService {
   getLicenses(): Observable<License[]> {
     return this.apiService.get<License[]>(this.endpoint);
   }
+
+  getLicense(id: number): Observable<License> {
+    return this.apiService.get<License>(`${this.endpoint}/${id}`);
+  }
 }

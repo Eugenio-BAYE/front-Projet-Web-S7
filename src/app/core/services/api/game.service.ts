@@ -41,4 +41,13 @@ export class GameService {
 
     return this.apiService.put<Game[]>(`${this.endpoint}/updateStatus`, payload);
   }
+
+  buyGames(jeux_a_acheter: number[], code_promo?: string, acheteur?: number): Observable<any> {
+    const payload = {
+      jeux_a_acheter,
+      code_promo: code_promo || null,
+      acheteur: acheteur || null,
+    };
+    return this.apiService.post(`${this.endpoint}/acheter`, payload);
+  }
 }
