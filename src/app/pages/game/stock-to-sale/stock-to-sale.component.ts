@@ -41,7 +41,7 @@ export class StockToSaleComponent implements OnInit {
         this.loadLicenseNames(); // Charger les noms des licences après avoir récupéré les jeux
       },
       error: (error) => {
-        this.notificationService.showError('Erreur lors du chargement des jeux.');
+        this.notificationService.showError(error);
       }
     });
   }
@@ -65,6 +65,14 @@ export class StockToSaleComponent implements OnInit {
   }
 
   mettreEnRayon(jeu: Game) {
-    this.notificationService.showSuccess(`Jeu ID ${jeu.id} mis en rayon.`);
+    this.gameService.mettreEnRayon([jeu]).subscribe({
+      next: () => {
+        this.jeux = this.jeux.filter((j) => j.id !== jeu.id);
+        this.notificationService.showSuccess(`Jeu ID ${jeu.id} mis en rayon.`);
+      },
+      error: (error) => {
+        this.notificationService.showError(error);
+      }
+    });
   }
 }

@@ -16,6 +16,7 @@ import { SellerComponent } from './pages/seller/seller.component';
 import { SessionCreatePageComponent } from './pages/session/session-create-page/session-create.component';
 import { StockToSaleComponent } from './pages/game/stock-to-sale/stock-to-sale.component';
 import { GameSalePageComponent } from './pages/game/game-sale-page/game-sale-page.component';
+import { BuyerCreatePageComponent } from './pages/buyer/buyer-create-page/buyer-create-page.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -91,6 +92,17 @@ export const routes: Routes = [
       {
         path: 'create',
         component: EditorCreatePageComponent,
+      }
+    ]
+  },
+  {
+    path: 'buyer',
+    canActivate: [roleGuard],
+    data: { role: 'manager' },
+    children: [
+      {
+        path: 'create',
+        component: BuyerCreatePageComponent,
       }
     ]
   },

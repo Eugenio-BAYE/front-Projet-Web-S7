@@ -18,4 +18,8 @@ export class BuyerService {
     return this.apiService.get<Buyer>(`${this.endpoint}/${email}`);
   }
 
+  registerBuyer(buyer: Buyer): Observable<string> {
+    return this.apiService.post<string>(`${this.endpoint}/register`, buyer);
+  }
+
 }
