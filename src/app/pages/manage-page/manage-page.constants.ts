@@ -81,4 +81,9 @@ export const MANAGE_ITEMS: ManageItem[] = [
         route: 'session',
         isImportant: true,
     },
+    {
+        label: 'Put for sale',
+        route: 'game/stockToSale',
+        isImportant: true,
+    }
 ]

@@ -48,6 +48,9 @@ export class AuthService {
     );
   }
 
+  refreshToken() {
+  }
+
   /**
   * Logs out the user, clears the expiration timer, and removes stored expiration.
   */

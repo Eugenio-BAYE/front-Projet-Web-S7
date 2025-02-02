@@ -11,13 +11,21 @@ import { environment } from 'src/environments/environment';
 export class ApiService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+  private refreshToken() {
+    this.http.post(`${this.apiUrl}/administrateurs/refresh-token`, {}, { withCredentials: true });
+    this.http.post(`${this.apiUrl}/gestionnaires/refresh-token`, {}, { withCredentials: true });
+  }
 
 
   get<T>(endpoint: string): Observable<T> {
     const httpOptions = {
       withCredentials: true
     };
+    this.refreshToken();
     return this.http.get<T>(`${this.apiUrl}/${endpoint}`, httpOptions);
   }
 

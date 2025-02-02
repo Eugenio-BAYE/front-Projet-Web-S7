@@ -1,0 +1,51 @@
+<div class="flex flex-col items-center">
+    <h1>Jeux en stock non mis en rayon</h1>
+  
+    <table mat-table [dataSource]="jeux" class="mt-2">
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let jeu">{{ jeu.id }}</td>
+      </ng-container>
+  
+      <!-- Licence ID Column -->
+      <ng-container matColumnDef="licence_id">
+        <th mat-header-cell *matHeaderCellDef>ID Licence</th>
+        <td mat-cell *matCellDef="let jeu">{{ jeu.licence_id }}</td>
+      </ng-container>
+  
+      <!-- Prix Column -->
+      <ng-container matColumnDef="prix">
+        <th mat-header-cell *matHeaderCellDef>Prix (€)</th>
+        <td mat-cell *matCellDef="let jeu">{{ jeu.prix }}</td>
+      </ng-container>
+  
+      <!-- Statut Column -->
+      <ng-container matColumnDef="statut">
+        <th mat-header-cell *matHeaderCellDef>Statut</th>
+        <td mat-cell *matCellDef="let jeu">{{ jeu.statut }}</td>
+      </ng-container>
+  
+      <!-- Depot ID Column -->
+      <ng-container matColumnDef="depot_id">
+        <th mat-header-cell *matHeaderCellDef>ID Dépôt</th>
+        <td mat-cell *matCellDef="let jeu">{{ jeu.depot_id }}</td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let jeu">
+          <button mat-raised-button color="primary" (click)="mettreEnRayon(jeu)">
+            Mettre en Rayon
+          </button>
+        </td>
+      </ng-container>
+  
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

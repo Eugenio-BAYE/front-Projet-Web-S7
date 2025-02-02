@@ -28,4 +28,17 @@ export class GameService {
     console.log(payload);
     return this.apiService.post<Game>(`${this.endpoint}/deposer`, payload, { withCredentials: true });
   }
+
+  jeuxPasEnRayon(): Observable<Game[]> {
+    return this.apiService.get<Game[]>(`${this.endpoint}/pas_en_rayon`);
+  }
+
+  mettreEnRayon(jeux : Game[]): Observable<Game[]> {
+    const payload = {
+      jeux_ids: jeux.map(jeu => jeu.id),
+      nouveau_statut: "en vente"
+    };
+
+    return this.apiService.put<Game[]>(`${this.endpoint}/updateStatus`, payload);
+  }
 }

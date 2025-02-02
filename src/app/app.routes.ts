@@ -14,6 +14,7 @@ import { LicenseCreatePageComponent } from './pages/license/license-create-page/
 import { GameDepositComponent } from './pages/game/game-deposit/game-deposit.component';
 import { SellerComponent } from './pages/seller/seller.component';
 import { SessionCreatePageComponent } from './pages/session/session-create-page/session-create.component';
+import { StockToSaleComponent } from './pages/game/stock-to-sale/stock-to-sale.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -128,6 +129,10 @@ export const routes: Routes = [
         path: 'deposit',
         component: GameDepositComponent
       },
+      {
+        path: 'stockToSale',
+        component: StockToSaleComponent
+      }
     ],
   },
   // --- 404 route ---
