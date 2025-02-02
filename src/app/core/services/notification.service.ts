@@ -16,6 +16,13 @@ export class NotificationService {
     });
   }
 
+  showMessage(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      panelClass: ['msg']
+    });
+  }
+
   /**
    * Displays an error message in the user interface.
    * 
@@ -26,7 +33,6 @@ export class NotificationService {
    * @returns {void}
    */
   showError(error: any): void {
-
     function extractErrorMessage(error: any): string {
       let parsedError;
     

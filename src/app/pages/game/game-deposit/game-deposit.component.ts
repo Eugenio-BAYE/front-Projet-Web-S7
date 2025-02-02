@@ -161,26 +161,27 @@ export class GameDepositComponent implements OnInit {
             console.error(error);
             switch (error.status) {
               case 400:
-              this.notificationService.showError(error.message);
+              this.notificationService.showError("error.message");
               break;
               case 401:
-              this.notificationService.showError(error.message);
+              this.notificationService.showError(error);
               break;
               case 404:
-              this.notificationService.showError(error.message);
+                console.error('Erreur 404 bip boup :', error);
+              this.notificationService.showError(error);
               break;
               case 500:
-              this.notificationService.showError(error.message);
+              this.notificationService.showError(error);
               break;
               default:
-              this.notificationService.showError(error.message);
+              this.notificationService.showError(error);
               break;
             }
           }
         });
       },
       error: (error) => {
-        this.notificationService.showError(error);
+        this.notificationService.showMessage("Le vendeur n'existe pas");
       }
     });
   }
