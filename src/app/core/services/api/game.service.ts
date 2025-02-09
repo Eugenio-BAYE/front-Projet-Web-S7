@@ -16,6 +16,10 @@ export class GameService {
     private apiService: ApiService
   ) { }
 
+  getGameById(jeu_id: number): Observable<Game> {
+    return this.apiService.get<Game>(`${this.endpoint}/${jeu_id}`);
+  }
+
   deposerJeu(games: Game[], quantity: number[], code_promo : string | null, seller : Seller): Observable<Game> {
     const payload = {
       quantite: quantity, // Quantité de jeux
