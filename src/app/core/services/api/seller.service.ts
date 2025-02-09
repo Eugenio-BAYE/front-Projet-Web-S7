@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Seller } from 'src/app/models/seller';
 
 @Injectable({
@@ -14,33 +14,41 @@ export class SellerService {
   }
 
   createSeller(seller: Seller): Observable<Seller> {
-    return this.apiService.post<Seller>(`${this.endpoint}/register`, seller, {withCredentials: true});
+    return this.apiService.post<Seller>(`${this.endpoint}/register`, seller, { withCredentials: true });
   }
 
   getSellerByEmail(email: string): Observable<Seller> {
-    return this.apiService.get<Seller>(`${this.endpoint}?email=${email}`); // TODO: Change ?email to= /
+    return this.apiService.get<Seller>(`${this.endpoint}/${email}`);
   }
 
-  getSellerStock(idSession: string, idVendeur: string, numPage?: number): Observable<any> {
+  getSellerStock(idSession: number, idVendeur: number, numPage?: number): Observable<any> {
     const url = numPage
       ? `${this.endpoint}/stock/${idSession}/${idVendeur}?numpage=${numPage}`
       : `${this.endpoint}/stock/${idSession}/${idVendeur}`;
     return this.apiService.get<any>(url);
   }
 
-  getAmountDue(idSession: string, idVendeur: string): Observable<number> {
-    return this.apiService.get<number>(`${this.endpoint}/sommedue/${idSession}/${idVendeur}`);
+  getSoldGames(idSession: number, idVendeur: number, numPage?: number): Observable<any> {
+    return this.getSellerStock(idSession, idVendeur, numPage).pipe(
+      map((games) => games.filter((game: any) => game.statut === 'vendu'))
+    );
   }
 
-  resetAmountDue(idSession: string, idVendeur: string): Observable<void> {
+  getAmountDue(idSession: number, idVendeur: number): Observable<{ sommedue: number }> {
+    return this.apiService.get<{ sommedue: number }>(`${this.endpoint}/sommedue/${idSession}/${idVendeur}`);
+  }
+
+
+  getTotalEarned(idSession: number, idVendeur: number): Observable<{ sommegenerée: number }> {
+    return this.apiService.get<{ sommegenerée: number }>(`${this.endpoint}/argentgagne/${idSession}/${idVendeur}`);
+  }
+
+  getSellerStats(idVendeur: number): Observable<any> {
+    return this.apiService.get<any>(`${this.endpoint}/stats/${idVendeur}`);
+  }
+
+  resetAmountDue(idSession: number, idVendeur: number): Observable<void> {
     return this.apiService.put<void>(`${this.endpoint}/sommedue/${idSession}/${idVendeur}`, {});
   }
 
-  getTotalEarned(idSession: string, idVendeur: string): Observable<number> {
-    return this.apiService.get<number>(`${this.endpoint}/argentgagne/${idSession}/${idVendeur}`);
-  }
-
-  getSellerStats(idVendeur: string): Observable<any> {
-    return this.apiService.get<any>(`${this.endpoint}/stats/${idVendeur}`);
-  }
 }

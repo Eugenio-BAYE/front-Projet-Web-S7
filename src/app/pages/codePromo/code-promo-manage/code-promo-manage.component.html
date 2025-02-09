@@ -1,0 +1,48 @@
+<div class="flex flex-col items-center">
+    <!-- Bouton de bascule -->
+    <button mat-raised-button color="primary" (click)="toggleView()">
+        {{ isCreating ? 'Voir la liste des Codes Promo' : 'Créer un Code Promo' }}
+    </button>
+
+    <!-- Formulaire de création -->
+    <div *ngIf="isCreating">
+        <h1>Générer un Code Promo</h1>
+        <form [formGroup]="codePromoForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Libellé du Code Promo</mat-label>
+                <input matInput formControlName="libelle">
+                <mat-error *ngIf="codePromoForm.get('libelle')?.invalid && codePromoForm.get('libelle')?.touched">
+                    Le libellé doit contenir au moins 3 caractères.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Réduction (%)</mat-label>
+                <input matInput type="number" formControlName="reductionPourcent">
+                <mat-error *ngIf="codePromoForm.get('reductionPourcent')?.invalid && codePromoForm.get('reductionPourcent')?.touched">
+                    La réduction doit être entre 1% et 100%.
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="codePromoForm.invalid">
+                Générer le Code Promo
+            </button>
+        </form>
+    </div>
+
+    <!-- Liste des codes promo -->
+    <div *ngIf="!isCreating">
+        <h1>Liste des Codes Promo</h1>
+        <table mat-table [dataSource]="codesPromo" class="mat-elevation-z8">
+            <thead>
+                <tr>
+                    <th mat-header-cell *matHeaderCellDef>Libellé</th>
+                    <th mat-header-cell *matHeaderCellDef>Réduction (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr mat-row *matRowDef="let codePromo; columns: ['libelle', 'reductionPourcent'];"></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

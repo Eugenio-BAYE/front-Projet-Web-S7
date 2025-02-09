@@ -1,1 +1,70 @@
-<p>game-sale-page works!</p>
+<div class="flex flex-col items-center">
+    <h1>Achat de Jeux</h1>
+    <h2>Identifiez l'acheteur et entrez les jeux à acheter</h2>
+  
+    <form [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Email de l'acheteur (optionnel) -->
+      <mat-form-field>
+        <mat-label>Email de l'acheteur (optionnel)</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+    <button mat-raised-button type="button" [disabled]="purchaseForm.get('email')?.invalid || !purchaseForm.get('email')?.touched" (click)="fetchBuyer()">Vérifier l'acheteur</button>
+  
+      <!-- Affichage de l'acheteur si trouvé -->
+      <div *ngIf="buyer">
+        <p><strong>Nom :</strong> {{ buyer.nom }}</p>
+        <p><strong>Email :</strong> {{ buyer.email }}</p>
+        <p><strong>Téléphone :</strong> {{ buyer.telephone }}</p>
+      </div>
+  
+      <!-- IDs des jeux à acheter -->
+      <mat-form-field>
+        <mat-label>IDs des jeux (séparés par des virgules)</mat-label>
+        <input matInput formControlName="jeux_a_acheter">
+        <mat-error *ngIf="purchaseForm.get('jeux_a_acheter')?.invalid && purchaseForm.get('jeux_a_acheter')?.touched">
+          Veuillez entrer au moins un ID valide.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Code promo (optionnel) -->
+      <mat-form-field>
+        <mat-label>Code Promo (optionnel)</mat-label>
+        <input matInput formControlName="code_promo">
+      </mat-form-field>
+  
+    <button mat-raised-button type="submit" [disabled]="purchaseForm.invalid || (buyer==null && purchaseForm.get('email')?.touched)">
+        Acheter
+      </button>
+    </form>
+
+    <button mat-raised-button type="button" *ngIf="invoiceDetails.length>0" (click)="showInvoice = !showInvoice">Montrer les informations de facturation</button>
+
+    <div *ngIf="showInvoice && invoiceDetails.length > 0" class="facture-container">
+      <h2>Facture</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Jeu</th>
+            <th>Éditeur</th>
+            <th>Vendeur</th>
+            <th>Prix</th>
+            <th>Commission</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoiceDetails">
+            <td>{{ item.nom }}</td>
+            <td>{{ item.editeur }}</td>
+            <td>{{ item.vendeur }}</td>
+            <td>{{ item.prix | number:'1.2-2' }} €</td>
+            <td>{{ item.commission | number:'1.2-2' }} €</td>
+            <td>{{ item.total | number:'1.2-2' }} €</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Total à payer : {{ totalInvoiceAmount | number:'1.2-2' }} €</h3>
+    </div>
+  </div>
+  

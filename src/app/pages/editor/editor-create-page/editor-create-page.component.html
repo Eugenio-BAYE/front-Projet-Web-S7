@@ -1,0 +1,17 @@
+<dir class="flex flex-col items-center ">
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <h1>New Editor</h1>
+        <h2>Provide informations about the new user</h2>
+        <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nom">
+            <mat-error *ngIf="myForm.get('nom')?.invalid && myForm.get('nom')?.touched">
+                Your name does not look right
+            </mat-error>
+        </mat-form-field>
+        <button type="submit" [disabled]="false">
+            Create Editor
+        </button>
+    </form>
+</dir>

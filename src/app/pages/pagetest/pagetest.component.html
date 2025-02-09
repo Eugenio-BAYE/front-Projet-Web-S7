@@ -1,1 +1,15 @@
 <p class="text-white">pagetest works!</p>
+<p>Components Test :</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <h1>Create Seller</h1>
+
+    <!-- Ajout de champs via le composant enfant -->
+    <app-input-field [formGroup]="myForm" fieldType="name"></app-input-field>
+    <app-input-field [formGroup]="myForm" fieldType="email"></app-input-field>
+    <app-input-field [formGroup]="myForm" fieldType="telephone"></app-input-field>
+    <app-input-field [formGroup]="myForm" fieldType="address"></app-input-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">
+        Create
+    </button>
+</form>
