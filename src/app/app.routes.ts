@@ -120,12 +120,6 @@ export const routes: Routes = [
         component: SellerManageComponent, // TODO: Create a UserPageComponent
       },
       {
-        path: 'create',
-        component: SellerCreateComponent, // TODO: Create a UserCreateComponent
-        canActivate: [roleGuard],
-        data: { role: 'admin' },
-      },
-      {
         path: 'view',
         component: PagetestComponent, // TODO: Create a UserPageComponent
         canActivate: [roleGuard],

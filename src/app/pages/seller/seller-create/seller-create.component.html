@@ -34,6 +34,6 @@
             </mat-error>
         </mat-form-field>
 
-        <button type="submit" [disabled]="false">Create</button>
+        <button mat-raised-button type="submit" [disabled]="!myForm.valid">Create</button>
     </form>
 </dir>

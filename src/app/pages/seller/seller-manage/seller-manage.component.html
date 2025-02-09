@@ -1,15 +1,75 @@
-<dir class="flex flex-col items-center">
+<div class="flex flex-col items-center">
     <form [formGroup]="findSeller" (ngSubmit)="onSubmit()">
-        <h1>Find Seller</h1>
-        <h2>Enter email :</h2>
+        <h1>Gérer un Vendeur</h1>
+
+        <!-- Champ email -->
         <mat-form-field>
-            <mat-label>Email</mat-label>
+            <mat-label>Email du vendeur</mat-label>
             <input matInput formControlName="email">
             <mat-error *ngIf="findSeller.get('email')?.invalid && findSeller.get('email')?.touched">
-                Your email does not look right
+                Veuillez entrer un email valide
             </mat-error>
         </mat-form-field>
-        <button type="submit" [disabled]="false">Find</button>
+
+        <!-- Sélection de la session -->
+        <mat-form-field>
+            <mat-label>Sélectionner une session</mat-label>
+            <mat-select formControlName="idSession">
+                <mat-option *ngFor="let session of sessions" [value]="session.id">
+                    {{ formatDate(session.date_debut) }} - {{ formatDate(session.date_fin) }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="findSeller.get('idSession')?.invalid && findSeller.get('idSession')?.touched">
+                Veuillez sélectionner une session
+            </mat-error>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary">Rechercher</button>
     </form>
 
-</dir>
+    <div class="justify-items-start">
+        <!-- Affichage des informations générales du vendeur -->
+        <div *ngIf="seller" class="mt-4">
+            <h2>Informations Générales</h2>
+            <p><strong>Nom :</strong> {{ seller.nom }}</p>
+            <p><strong>Email :</strong> {{ seller.email }}</p>
+            <p><strong>Téléphone :</strong> {{ seller.telephone }}</p>
+            <p><strong>Adresse :</strong> {{ seller.adresse }}</p>
+        </div>
+
+        <div *ngIf="seller" class="mt-4">
+            <h2>Statistiques Globales (Toutes Sessions)</h2>
+            <p><strong>Revenu total généré :</strong> {{ totalRevenueAllSessions }} €</p>
+            <p><strong>Somme totale due :</strong> {{ totalAmountDue }} €</p>
+        </div>
+
+
+        <!-- Affichage des statistiques générales uniquement si le vendeur a vendu des jeux -->
+        <div *ngIf="totalSoldGames > 0" class="mt-4">
+            <h2>Statistiques Générales</h2>
+            <p><strong>Nombre total de jeux vendus :</strong> {{ totalSoldGames }}</p>
+            <p><strong>Revenu total généré :</strong> {{ totalRevenue }} €</p>
+        </div>
+
+        <!-- Affichage des informations spécifiques à une session -->
+        <div *ngIf="seller && findSeller.get('idSession')?.value" class="mt-4">
+            <h2>Informations pour la Session Sélectionnée</h2>
+            <p><strong>Stock actuel :</strong> {{ stock.length }} jeux</p>
+            <p><strong>Jeux vendus :</strong> {{ soldGames.length }} jeux</p>
+            <p><strong>Somme due :</strong> {{ amountDue }} €</p>
+            <p><strong>Revenu généré dans cette session :</strong> {{ totalEarned }} €</p>
+        </div>
+
+        <!-- Bouton pour remettre la somme due à zéro -->
+        <div *ngIf="seller && findSeller.get('idSession')?.value" class="mt-4">
+            <h2>Gestion du Paiement</h2>
+            <p>Lorsque vous payez le vendeur ou qu'il règle ses commissions, vous devez remettre le solde à zéro.</p>
+
+            <button mat-raised-button color="warn" type="button" (click)="resetBalance()" class="mt-4 mb-8 items-center">
+                Payer le vendeur / Remettre à zéro
+            </button>
+        </div>
+
+
+    </div>
+</div>

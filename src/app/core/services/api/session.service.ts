@@ -17,4 +17,9 @@ export class SessionService {
   createSession(session: Session): Observable<Session> {
     return this.apiService.post<Session>(`${this.endpoint}`, session, { withCredentials: true });
   }
+
+  getAllSessions(): Observable<Session[]> {
+    return this.apiService.get<Session[]>(`${this.endpoint}/`);
+  }
+  
 }
