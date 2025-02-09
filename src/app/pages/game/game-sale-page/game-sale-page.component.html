@@ -37,5 +37,34 @@
         Acheter
       </button>
     </form>
+
+    <button mat-raised-button type="button" *ngIf="invoiceDetails.length>0" (click)="showInvoice = !showInvoice">Montrer les informations de facturation</button>
+
+    <div *ngIf="showInvoice && invoiceDetails.length > 0" class="facture-container">
+      <h2>Facture</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Jeu</th>
+            <th>Éditeur</th>
+            <th>Vendeur</th>
+            <th>Prix</th>
+            <th>Commission</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoiceDetails">
+            <td>{{ item.nom }}</td>
+            <td>{{ item.editeur }}</td>
+            <td>{{ item.vendeur }}</td>
+            <td>{{ item.prix | number:'1.2-2' }} €</td>
+            <td>{{ item.commission | number:'1.2-2' }} €</td>
+            <td>{{ item.total | number:'1.2-2' }} €</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Total à payer : {{ totalInvoiceAmount | number:'1.2-2' }} €</h3>
+    </div>
   </div>
   

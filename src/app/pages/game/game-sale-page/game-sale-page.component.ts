@@ -28,6 +28,7 @@ export class GameSalePageComponent {
   buyer: Buyer | null = null;
   invoiceDetails: any[] = [];
   totalInvoiceAmount: number = 0;
+  showInvoice: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -124,8 +125,14 @@ export class GameSalePageComponent {
                 this.gameService.getGameById(achat.jeu_id).subscribe({
                     next: (gameInfo) => {
                         const prix = gameInfo.prix;
-                        const commission = prix * parseFloat(achat.commission); // Calcul de la commission
-                        const total = prix - commission;
+                        const commission = isNaN(Number(achat.commission)) ? 0 : Number(achat.commission);
+                        var total : number = 0;
+                        if (typeof commission == "number") {
+                          total = prix + commission ;
+                        }
+                        else {
+                          total = prix;
+                        }
                         console.log(gameInfo) // TODO: Remove this line
 
                         this.invoiceDetails.push({
@@ -140,7 +147,7 @@ export class GameSalePageComponent {
 
                         remainingRequests--;
                         if (remainingRequests === 0) {
-                            console.log("📜 Facture prête :", this.invoiceDetails);
+                            console.log("📜 Facture prête :", this.invoiceDetails); // TODO : Remove this line
                         }
                     },
                     error: (error) => {
@@ -150,8 +157,7 @@ export class GameSalePageComponent {
                 });
             });
 
-            this.purchaseForm.reset();
-            this.buyer = null;
+            console.log(this.totalInvoiceAmount); // TODO: Remove this line
         },
         error: (error) => {
             this.notificationService.showError(error);
