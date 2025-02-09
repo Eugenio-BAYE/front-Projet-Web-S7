@@ -85,5 +85,11 @@ export const MANAGE_ITEMS: ManageItem[] = [
         label: 'Put for sale',
         route: 'game/stockToSale',
         isImportant: true,
+    },
+    {
+        label: 'Manage Sales Code',
+        route: 'code-promo',
+        isImportant: true,
     }
+
 ]
