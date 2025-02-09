@@ -113,7 +113,9 @@ export class GameSalePageComponent {
             console.log(response);
             this.notificationService.showSuccess('Jeux achetés avec succès !');
 
-            const achats = response.achats; // Liste des achats avec `jeu_id`
+            const parsedResponse = typeof response === "string" ? JSON.parse(response) : response;
+            const achats = parsedResponse.achats;
+            console.log('🛒 Achats :', achats);
             this.invoiceDetails = [];
             this.totalInvoiceAmount = 0;
             let remainingRequests = achats.length;
@@ -124,6 +126,7 @@ export class GameSalePageComponent {
                         const prix = gameInfo.prix;
                         const commission = prix * parseFloat(achat.commission); // Calcul de la commission
                         const total = prix - commission;
+                        console.log(gameInfo) // TODO: Remove this line
 
                         this.invoiceDetails.push({
                             id: gameInfo.id,
