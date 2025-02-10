@@ -17,4 +17,8 @@ import { RouterModule } from '@angular/router';
 export class ManagePageComponent {
   manageItems = MANAGE_ITEMS;
 
+  getRandomRotation(): number {
+    return Math.random() * 4 - 2;
+  }
+
 }

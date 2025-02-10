@@ -26,6 +26,6 @@ export const NAV_ITEMS: NavItem[] = [
 export const HEADER_ITEMS = [
     {
         title: 'MonoPolytech',
-        icon: 'https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600',
+        icon: 'https://cdn.icon-icons.com/icons2/41/PNG/128/monopolygame_monopolio_6962.png',
     }
 ]

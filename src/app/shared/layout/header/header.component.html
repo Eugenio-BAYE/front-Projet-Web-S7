@@ -2,13 +2,13 @@
   class="flex text-text font-medium w-full relative content-center justify-between py-2 px-2 space-x-5 border-b border-overlay0">
 
   <nav class="flex content-center justify-between">
-    <a href="#" class="font-bold hover:text-prussian_blue-600 flex">
+    <a href="#" class="font-bold hover:text-prussian_blue-600 flex" style="transform: rotate(+2deg);">
       <img [src]="headerItems[0].icon" alt="Icon" class="h-14 w-auto self-center mx-4" />
-      <p class="content-center">{{ headerItems[0].title }}</p>
+      <p class="content-center" style="transform: rotate(-5deg);">{{ headerItems[0].title }}</p>
     </a>
   </nav>
   <!-- Item  List -->
-  <div class="content-center place-content-center self-center lg:block hidden ring-1 ring-surface0 rounded-full p-2">
+  <div class="content-center place-content-center self-center lg:block hidden ring-1 ring-surface0 rounded-full p-2" style="transform: rotate(1deg);">
     <a *ngFor="let navItem of navItems" href="{{navItem.route}}" class="nav-link">
       <span class="nav-label" *ngIf="!navItem.forAdmin">
         {{ navItem.label }}
@@ -35,9 +35,7 @@
       </span>
     </a>
   </div>
-  <div
-    class="rounded border border-gray-300 text-gray-500 bg-gray-100 px-2 pr-10 mr-4 my-2 content-center lg:block hidden">
-    Search...
+  <div>
   </div>
   <div class="max-lg:block hidden content-center justify-end px-4">
     <mat-icon class="scale-150">menu</mat-icon>
