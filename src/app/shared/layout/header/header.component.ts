@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NAV_ITEMS, HEADER_ITEMS } from 'src/app/constants';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
     NgFor,
     NgIf,
     MatIconModule,
+    CommonModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -27,6 +28,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
   ) { }
+
+  getRandomRotation(): number {
+    return Math.random() * 4 - 2;
+  }
 
   toggleSidebar() {
     console.log('burger cliqué');

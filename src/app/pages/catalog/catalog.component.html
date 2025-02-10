@@ -1,0 +1,53 @@
+<div class="flex flex-col items-center space-y-6">
+    <h1 class="text-2xl font-bold">Catalogue des Jeux</h1>
+
+    <!-- Formulaire de recherche -->
+    <form [formGroup]="searchForm" (ngSubmit)="searchGames()" class="grid grid-cols-2 gap-4 w-full max-w-3xl">
+        <!-- Sélection d'un éditeur -->
+        <mat-form-field>
+            <mat-label>Éditeur</mat-label>
+            <input type="text" matInput [formControl]="editeurControl" [matAutocomplete]="autoEditeur">
+            <mat-autocomplete #autoEditeur="matAutocomplete">
+                <mat-option *ngFor="let editeur of filteredEditeurs | async" [value]="editeur.nom">
+                    {{ editeur.nom }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- Sélection d'une licence -->
+        <mat-form-field>
+            <mat-label>Licence</mat-label>
+            <input type="text" matInput [formControl]="licenceControl" [matAutocomplete]="autoLicence">
+            <mat-autocomplete #autoLicence="matAutocomplete">
+                <mat-option *ngFor="let licence of filteredLicences | async" [value]="licence.nom">
+                    {{ licence.nom }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Prix min</mat-label>
+            <input matInput type="number" formControlName="price_min">
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Prix max</mat-label>
+            <input matInput type="number" formControlName="price_max">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="col-span-2">
+            Rechercher
+        </button>
+    </form>
+
+    <!-- Grid des jeux -->
+    <div *ngIf="games.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+        <div *ngFor="let game of games" class="bg-surface0 shadow-md rounded-lg p-4 flex flex-col">
+            <h2 class="text-lg font-bold">{{ game.licence_name }}</h2>
+            <p class="text-green-600 font-semibold">Prix le plus bas : {{ game.prix | number:'1.2-2' }} €</p>
+            <button mat-raised-button color="accent" disabled="false" class="mt-3">Disponible</button>
+        </div>
+    </div>
+
+    <p *ngIf="games.length === 0" class="text-gray-500">Aucun jeu trouvé.</p>
+</div>

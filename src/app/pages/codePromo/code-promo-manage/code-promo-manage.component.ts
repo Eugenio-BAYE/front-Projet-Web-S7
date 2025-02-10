@@ -28,6 +28,7 @@ export class CodePromoManageComponent {
   codePromoForm: FormGroup;
   isCreating = true; // Par défaut, on affiche le formulaire
   codesPromo: CodePromo[] = [];
+  displayedColumns: string[] = ['libelle', 'reductionPourcent'];
 
   constructor(
     private fb: FormBuilder,

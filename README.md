@@ -1,57 +1,62 @@
-# Awi
+# Monopolytech - Plateforme de Vente de Jeux Vidéo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
+Monopolytech est une plateforme permettant l'achat et la vente de jeux vidéo, développée dans le cadre du projet AWI à Polytech Montpellier par **Eugénio BAYE** et **Hugo Brun**.
 
-## Project Purpose and Features
+## 🚀 Accéder à l'Application
 
-The purpose of this project is to provide a web application built with Angular. The application includes various features such as user authentication, data visualization, and real-time updates.
+🔗 **Front-end** (Interface utilisateur) :  
+[Monopolytech ](https://awi-86d26c373fe5.herokuapp.com/)
 
-## Development server
+Afin de profiter du site sans problèmes, privilégiez l'utilisation de Google Chrome à Safari afin d'éviter les problèmes spécifiques à Mac
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🧪 Identifiants de Test
 
-## Code scaffolding
+Connection en tant qu'administrateur avec les identifiants suivants :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Email** : `admin@example.com`
+- **Mot de passe** : `admin123`
 
-## Build
+🔗 **Dépôts GitHub** :  
+- **Frontend** : [GitHub - Front](https://github.com/Eugenio-BAYE/front-Projet-Web-S7)  
+- **Backend** : [GitHub - Back](https://github.com/awiIg4/back-Projet-Web-S7)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Technologies Utilisées
 
-## Running unit tests
+- **Frontend** : Angular, Tailwind CSS, Angular Material  
+- **Backend** : Node.js, Express, Sequelize, PostgreSQL  
+- **Déploiement** : Heroku (front & back), Docker (en développement)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📜 Fonctionnalités à découvrir
 
-## Running end-to-end tests
+- **Connection** : Login -> Credential Admin-> Login
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Processus de vente :
 
-## Further help
+- **Création d'une session** : Create Session -> Enregistrement des informations
+- **Création d'un vendeur** : Manage Seller -> Enregistrement des informations
+- **Dépôt de jeux** : Game Deposit -> Enregistrement du vendeur et des jeux à déposer
+- **Mise en vente des jeux** : Put Games For Sale -> Etiquettage des jeux -> Mise en vente
+- **Achat d'un jeu** : Game Sale -> Enregistrement des jeux par leurs étiquettes -> Ventes avec Facture si acheteur enregistré
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Autres Fonctionnalités :
 
-## Contributing
+- **Statistiques de ventes** : Par vendeur dans manage seller et générales dans Session Statistiques
+- **Catalogue** : Filtrage des jeux par catalogue
+- **Promotion** : Create Sales Code -> Gestion et création des codes promo
+- **Création d'une session** : Create Session -> Enregistrement des informations
+- **Création de licenses et d'éditeurs** : Create editor | Create License
+- **Création de manager** : Create Manager -> informations
 
-To contribute to this project, please follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Make your changes and commit them with clear and concise messages.
-4. Push your changes to your forked repository.
-5. Create a pull request to the main repository.
+Nous vous conseillons de vous connecter en tant qu'administrateur pour profiter d'un maximum de fonctionnalités
+La base de données et déjà peuplée afin de vous éviter de perdre du temps sur les fonctionnalités basiques
+Des Vendeurs (hugovendeur@exemple.com) et acheteurs (hugo.brun@etu.umontpellier.fr) ont déja été créés et ont acheté/vendu des jeux
 
-## Launching with Docker Compose
 
-To launch the application using Docker Compose, follow these steps:
+## 📖 Projet Universitaire
 
-1. Ensure you have Docker Desktop installed and running on your machine.
-2. Navigate to the project directory in your terminal.
-3. Run the following command to start the application:
-   ```
-   docker compose watch
-   ```
-4. The application will be available at `http://localhost:4200/`.
+Ce projet a été réalisé dans le cadre du **projet AWI** à **Polytech Montpellier**
 
-To stop the application, run the following command:
-```
-docker compose stop
-```
+---
+
+© 2025 Monopolytech - Projet AWI Polytech Montpellier  
+Développé par **Eugénio BAYE** & **Hugo Brun**

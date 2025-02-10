@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login-page',
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
+    MatButtonModule
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
@@ -36,8 +38,8 @@ export class LoginPageComponent {
   ngOnInit() {
     this.loginForm = this.fb.group({
       userType: ['admin'],
-      email: [''], // TODO: Add validators
-      password: [''],
+      email: ['', [Validators.required, Validators.email]], 
+      password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 

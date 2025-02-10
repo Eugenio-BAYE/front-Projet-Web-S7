@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../api.service';
 import { map, Observable } from 'rxjs';
 import { Seller } from 'src/app/models/seller';
+import { Game } from 'src/app/models/game';
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,57 @@
+.grid-container {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Center the grid and make it narrower */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Narrower columns */
+    max-width: 600px; /* Limit width */
+    width: 100%;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Improve button styles */
+.manage-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(128, 2, 160);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 80px;
+    width: 100%; /* Make buttons fill the grid */
+    max-width: 280px; /* Set a reasonable max width */
+    margin: 0 auto; /* Center buttons */
+}
+
+/* Button hover effect */
+.manage-button:hover {
+    background-color: #6302be;
+    transform: scale(1.05);
+}
+
+/* Ensure text is centered */
+.nav-label {
+    display: block;
+    text-align: center;
+}

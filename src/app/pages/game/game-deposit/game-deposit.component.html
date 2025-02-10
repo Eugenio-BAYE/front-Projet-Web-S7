@@ -65,7 +65,7 @@
 
 
       <h2>Jeux sélectionnés :</h2>
-      <mat-list *ngIf="games.length === quantities.length">
+      <mat-list *ngIf="games.length === quantities.length" class="w-full mt-4">
         <mat-list-item *ngFor="let game of games; let i = index" class="flex justify-between items-center">
           <div class="flex items-center w-full">
         <span class="flex-grow">
@@ -81,7 +81,7 @@
 
     </form>
 
-    <button mat-raised-button type="submit" [disabled]="gameDepositForm.invalid">
+    <button mat-raised-button type="submit" [disabled]="gameDepositForm.invalid || games.length === 0">
       Déposer les Jeux
     </button>
   </form>
