@@ -1,6 +1,7 @@
   import { CommonModule } from '@angular/common';
   import { Component, OnInit } from '@angular/core';
   import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
   import { MatFormFieldModule } from '@angular/material/form-field';
   import { MatInputModule } from '@angular/material/input';
   import { MatSelectModule } from '@angular/material/select';
@@ -19,6 +20,7 @@
       MatFormFieldModule,
       MatInputModule,
       MatSelectModule,
+      MatButtonModule
     ],
     templateUrl: './license-create-page.component.html',
     styleUrl: './license-create-page.component.css'

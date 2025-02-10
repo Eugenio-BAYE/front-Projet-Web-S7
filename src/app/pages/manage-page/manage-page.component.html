@@ -1,8 +1,9 @@
 <div class="grid-container">
-    <h1>Gestion</h1>
+    <h1 style="transform: rotate(-2deg);">Gestion</h1>
     <div class="grid">
-        <a *ngFor="let manageItem of manageItems" href="{{manageItem.route}}"  class="manage-button">
-            <span >{{ manageItem.label }}</span>
+        <a *ngFor="let manageItem of manageItems" [href]="manageItem.route" class="manage-button"
+            [ngStyle]="{'transform': 'rotate(' + getRandomRotation() + 'deg)'}">
+            <span>{{ manageItem.label }}</span>
         </a>
     </div>
 </div>

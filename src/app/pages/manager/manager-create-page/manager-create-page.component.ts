@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { Manager } from 'src/app/models/manager';
 import { ManagerService } from 'src/app/core/services/api/manager.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-manager-create-page',
@@ -16,6 +17,7 @@ import { ManagerService } from 'src/app/core/services/api/manager.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule
   ],
   templateUrl: './manager-create-page.component.html',
   styleUrl: './manager-create-page.component.css'

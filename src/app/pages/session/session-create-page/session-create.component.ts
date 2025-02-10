@@ -7,6 +7,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { SessionService } from 'src/app/core/services/api/session.service';
 import { Session } from 'src/app/models/session';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { Session } from 'src/app/models/session';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatButtonModule
   ],
   templateUrl: './session-create.component.html',
   styleUrl: './session-create.component.css'

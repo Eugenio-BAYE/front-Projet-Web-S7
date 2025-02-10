@@ -42,6 +42,11 @@ export const MANAGE_ITEMS: ManageItem[] = [
         isImportant: true,
     },
     {
+        label: 'Create Editor',
+        route : 'editor/create',
+        isImportant : true 
+    },
+    {
         label: 'Put games for sale',
         route: 'game/stockToSale',
         isImportant: true,

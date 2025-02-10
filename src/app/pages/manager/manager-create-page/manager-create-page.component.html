@@ -66,13 +66,13 @@
             <input matInput type="password" formControlName="password">
             <mat-error
                 *ngIf="managerCreateForm.get('password')?.hasError('required') && managerCreateForm.get('password')?.touched">
-                Temporary password is required
+                Password is required
             </mat-error>    
             <mat-error
                 *ngIf="managerCreateForm.get('password')?.hasError('minlength') && managerCreateForm.get('password')?.touched">
-                Temporary password must be at least 6 characters long
+                Password must be at least 6 characters long
             </mat-error>
         </mat-form-field>
         <!-- Submit button -->
-        <button type="submit" [disabled]="managerCreateForm.invalid">Create</button>
+        <button mat-button type="submit" [disabled]="managerCreateForm.invalid">Create</button>
     </form>
