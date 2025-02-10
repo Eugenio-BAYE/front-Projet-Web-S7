@@ -17,7 +17,7 @@ export class GameService {
   ) { }
 
   getGameById(jeu_id: number): Observable<Game> {
-    return this.apiService.get<Game>(`${this.endpoint}/${jeu_id}`);
+    return this.apiService.get<Game>(`${this.endpoint}/search/${jeu_id}`);
   }
   
   getSellerRecuperableGames(idVendeur: number, idSession: number): Observable<Game[]> {
