@@ -17,6 +17,8 @@ import { SessionCreatePageComponent } from './pages/session/session-create-page/
 import { StockToSaleComponent } from './pages/game/stock-to-sale/stock-to-sale.component';
 import { GameSalePageComponent } from './pages/game/game-sale-page/game-sale-page.component';
 import { BuyerCreatePageComponent } from './pages/buyer/buyer-create-page/buyer-create-page.component';
+import { CodePromoManageComponent } from './pages/codePromo/code-promo-manage/code-promo-manage.component';
+import { BilanComponent } from './pages/gestion/bilan/bilan.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -74,6 +76,18 @@ export const routes: Routes = [
     ],
   },
   {
+    path : 'code-promo',
+    canActivate: [roleGuard],
+    data: { role: 'manager' },
+    component: CodePromoManageComponent,
+  },
+  {
+    path: 'bilan',
+    canActivate: [roleGuard],
+    data: { role: 'manager' },
+    component: BilanComponent
+  },
+  {
     path: 'license',
     canActivate: [roleGuard],
     data: { role: 'manager' },
@@ -118,12 +132,6 @@ export const routes: Routes = [
       {
         path: 'find',
         component: SellerManageComponent, // TODO: Create a UserPageComponent
-      },
-      {
-        path: 'create',
-        component: SellerCreateComponent, // TODO: Create a UserCreateComponent
-        canActivate: [roleGuard],
-        data: { role: 'admin' },
       },
       {
         path: 'view',

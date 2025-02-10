@@ -8,6 +8,9 @@
       <mat-form-field>
         <mat-label>Email de l'acheteur (optionnel)</mat-label>
         <input matInput formControlName="email">
+        <mat-error *ngIf="purchaseForm.get('email')?.invalid && purchaseForm.get('email')?.touched">
+          Veuillez entrer un email valide.
+        </mat-error>
       </mat-form-field>
     <button mat-raised-button type="button" [disabled]="purchaseForm.get('email')?.invalid || !purchaseForm.get('email')?.touched" (click)="fetchBuyer()">Vérifier l'acheteur</button>
   
@@ -23,7 +26,7 @@
         <mat-label>IDs des jeux (séparés par des virgules)</mat-label>
         <input matInput formControlName="jeux_a_acheter">
         <mat-error *ngIf="purchaseForm.get('jeux_a_acheter')?.invalid && purchaseForm.get('jeux_a_acheter')?.touched">
-          Veuillez entrer au moins un ID valide.
+          Les id doivent être des nombres séparés par des virgules.
         </mat-error>
       </mat-form-field>
   
@@ -37,5 +40,34 @@
         Acheter
       </button>
     </form>
+
+    <button mat-raised-button type="button" *ngIf="invoiceDetails.length>0" (click)="showInvoice = !showInvoice">Montrer les informations de facturation</button>
+
+    <div *ngIf="showInvoice && invoiceDetails.length > 0" class="facture-container">
+      <h2>Facture</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Jeu</th>
+            <th>Éditeur</th>
+            <th>Vendeur</th>
+            <th>Prix</th>
+            <th>Commission</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoiceDetails">
+            <td>{{ item.nom }}</td>
+            <td>{{ item.editeur }}</td>
+            <td>{{ item.vendeur }}</td>
+            <td>{{ item.prix | number:'1.2-2' }} €</td>
+            <td>{{ item.commission | number:'1.2-2' }} €</td>
+            <td>{{ item.total | number:'1.2-2' }} €</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Total à payer : {{ totalInvoiceAmount | number:'1.2-2' }} €</h3>
+    </div>
   </div>
   

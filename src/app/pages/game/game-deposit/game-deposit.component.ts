@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,7 +27,8 @@ import { Seller } from 'src/app/models/seller';
     MatSelectModule,
     MatCheckboxModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './game-deposit.component.html',
   styleUrl: './game-deposit.component.css'

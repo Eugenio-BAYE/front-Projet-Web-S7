@@ -7,11 +7,6 @@ export interface ManageItem {
 // TODO: Remove forAdmin property from NavItem interface
 export const MANAGE_ITEMS: ManageItem[] = [
     {
-        label: 'Create Seller',
-        route: 'seller/create',
-        isImportant: false,
-    },
-    {
         label: 'Manage Seller',
         route: 'seller',
         isImportant: true,
@@ -27,33 +22,13 @@ export const MANAGE_ITEMS: ManageItem[] = [
         isImportant: true,
     },
     {
-        label: 'Manage Game',
-        route: 'game/manage',
-        isImportant: true,
-    },
-    {
         label: 'Create Buyer',
         route: 'buyer/create',
         isImportant: false,
     },
     {
-        label: 'Manage Buyer',
-        route: 'buyer/view',
-        isImportant: true,
-    },
-    {
         label: 'Create Manager',
         route: 'manager/create',
-        isImportant: true,
-    },
-    {
-        label: 'Manage Manager',
-        route: 'manager/manage',
-        isImportant: true,
-    },
-    {
-        label: 'Manage Users',
-        route: 'users',
         isImportant: true,
     },
     {
@@ -62,28 +37,24 @@ export const MANAGE_ITEMS: ManageItem[] = [
         isImportant: true,
     },
     {
-        label: 'Manage Licenses',
-        route: 'license',
+        label: 'Create License',
+        route: 'license/create',
         isImportant: true,
     },
     {
-        label: 'Manage Editors',
-        route: 'editor',
-        isImportant: true,
-    },
-    {
-        label: 'Manage Promotion',
-        route: 'promo',
-        isImportant: true,
-    },
-    {
-        label: 'Manage Sessions',
-        route: 'session',
-        isImportant: true,
-    },
-    {
-        label: 'Put for sale',
+        label: 'Put games for sale',
         route: 'game/stockToSale',
         isImportant: true,
+    },
+    {
+        label: 'Create Sales Code',
+        route: 'code-promo',
+        isImportant: true,
+    },
+    {
+        label : 'Show Current Session Stats',
+        route : 'bilan',
+        isImportant : true
     }
+
 ]

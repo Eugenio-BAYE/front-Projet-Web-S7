@@ -1,8 +1,8 @@
-<div class="flex flex-col items-center my-4 space-y-4">
-    <h1>Manage</h1>
-    <a *ngFor="let manageItem of manageItems" href="{{manageItem.route}}" class="nav-link">
-        <span class="nav-label">
-            {{ manageItem.label }}
-        </span>
-    </a>
+<div class="grid-container">
+    <h1>Gestion</h1>
+    <div class="grid">
+        <a *ngFor="let manageItem of manageItems" href="{{manageItem.route}}"  class="manage-button">
+            <span >{{ manageItem.label }}</span>
+        </a>
+    </div>
 </div>
