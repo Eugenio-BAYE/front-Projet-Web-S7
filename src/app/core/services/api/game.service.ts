@@ -19,6 +19,16 @@ export class GameService {
   getGameById(jeu_id: number): Observable<Game> {
     return this.apiService.get<Game>(`${this.endpoint}/${jeu_id}`);
   }
+  
+  getSellerRecuperableGames(idVendeur: number, idSession: number): Observable<Game[]> {
+    return this.apiService.get<Game[]>(`${this.endpoint}/a_recuperer?vendeur=${idVendeur}&session=${idSession}`);
+  }
+
+  recupererJeux(jeux_a_recup: number[]): Observable<any> {
+      return this.apiService.post(`${this.endpoint}/recuperer`, { jeux_a_recup });
+  }
+
+
 
   deposerJeu(games: Game[], quantity: number[], code_promo : string | null, seller : Seller): Observable<Game> {
     const payload = {

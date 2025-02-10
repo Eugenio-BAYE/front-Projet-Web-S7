@@ -12,6 +12,8 @@ import { Session } from 'src/app/models/session';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { GameService } from 'src/app/core/services/api/game.service';
 
 @Component({
   selector: 'app-seller-manage',
@@ -23,7 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   templateUrl: './seller-manage.component.html',
   styleUrl: './seller-manage.component.css'
@@ -42,6 +45,9 @@ export class SellerManageComponent implements OnInit {
   totalRevenue = 0;
   totalRevenueAllSessions: number = 0;
   totalAmountDue: number = 0;
+  recuperableGames: Game[] = [];
+  displayedColumns: string[] = ['id', 'prix', 'action'];
+
 
 
 
@@ -49,7 +55,8 @@ export class SellerManageComponent implements OnInit {
     private fb: FormBuilder,
     private sellerService: SellerService,
     private sessionService: SessionService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private gameService: GameService
   ) { }
 
   ngOnInit() {
@@ -71,6 +78,32 @@ export class SellerManageComponent implements OnInit {
       }
     });
   }
+
+  recupererJeu(jeuId: number) {
+    this.gameService.recupererJeux([jeuId]).subscribe({
+      next: (response) => {
+        this.notificationService.showSuccess("Jeu récupéré");
+        this.recuperableGames = this.recuperableGames.filter(game => game.id !== jeuId);
+      },
+      error: (error) => {
+        this.notificationService.showError(error);
+      }
+    });
+  }
+  
+
+  loadRecuperableGames(idVendeur: number, idSession: number) {
+    this.gameService.getSellerRecuperableGames(idVendeur, idSession).subscribe({
+      next: (games) => {
+        this.recuperableGames = games;
+        console.log('Jeux récupérables:', games);
+      },
+      error: (error) => {
+        this.notificationService.showError(error);
+      }
+    });
+  }
+  
 
 
   formatDate(dateString: string): string {
@@ -193,6 +226,7 @@ export class SellerManageComponent implements OnInit {
 
     const email = this.findSeller.value.email;
     const idSession = Number(this.findSeller.value.idSession);
+    this.recuperableGames = [];
 
     console.log('Recherche du vendeur:', email, 'pour la session', idSession);
 
@@ -271,5 +305,8 @@ export class SellerManageComponent implements OnInit {
         this.notificationService.showError(error);
       }
     });
+
+    // Charger les jeux récupérables
+    this.loadRecuperableGames(idVendeur, idSession);
   }
 }

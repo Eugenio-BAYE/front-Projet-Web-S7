@@ -63,7 +63,7 @@ export const MANAGE_ITEMS: ManageItem[] = [
     },
     {
         label: 'Manage Licenses',
-        route: 'license',
+        route: 'license/create',
         isImportant: true,
     },
     {
