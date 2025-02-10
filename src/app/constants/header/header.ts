@@ -7,6 +7,11 @@ export interface NavItem {
 // TODO: Remove forAdmin property from NavItem interface
 export const NAV_ITEMS: NavItem[] = [ 
     {
+        label: 'Home Page',
+        route: '',
+        forAdmin: false
+    },
+    {
         label: 'Catalog',
         route: 'catalog',
         forAdmin: false
