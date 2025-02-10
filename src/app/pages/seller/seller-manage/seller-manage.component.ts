@@ -62,7 +62,7 @@ export class SellerManageComponent implements OnInit {
   ngOnInit() {
     this.findSeller = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      idSession: ['', [Validators.required]] // Remplacé par une sélection de session
+      idSession: ['', [Validators.required],]
     });
 
     this.loadSessions();
@@ -167,9 +167,9 @@ export class SellerManageComponent implements OnInit {
               error: (error) => {
                 remainingRequests--;
                 if (remainingRequests === 0) {
-                  this.totalAmountDue = totalDue; // ✅ Ne pas forcer à 0 si négatif
+                  this.totalAmountDue = totalDue;
                 }
-                if (error.status !== 404) { // ✅ Ne pas afficher d'erreur si la somme n'existe pas
+                if (error.status !== 404) {
                   this.notificationService.showError(error);
                 }
               }
@@ -178,7 +178,7 @@ export class SellerManageComponent implements OnInit {
             remainingRequests--;
             if (remainingRequests === 0) {
               this.totalRevenueAllSessions = totalRevenue;
-              this.totalAmountDue = totalDue; // ✅ Ne pas forcer à 0 si négatif
+              this.totalAmountDue = totalDue;
             }
           }
         });
@@ -200,7 +200,7 @@ export class SellerManageComponent implements OnInit {
     this.sellerService.resetAmountDue(idSession, idVendeur).subscribe({
       next: () => {
         this.notificationService.showSuccess("Le solde du vendeur a été remis à zéro.");
-        this.loadSellerDetails(idVendeur, idSession); // Recharger les infos après mise à zéro
+        this.loadSellerDetails(idVendeur, idSession);
       },
       error: (error) => {
         this.notificationService.showError(error);

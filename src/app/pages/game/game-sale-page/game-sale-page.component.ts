@@ -37,8 +37,11 @@ export class GameSalePageComponent {
     private notificationService: NotificationService
   ) {
     this.purchaseForm = this.fb.group({
-      email: ['', Validators.email], // L'acheteur est optionnel
-      jeux_a_acheter: ['', Validators.required], // IDs des jeux séparés par des virgules
+      email: ['', Validators.email],
+      jeux_a_acheter: ['', [
+      Validators.required,
+      Validators.pattern(/^(\d+)(,\d+)*$/)
+      ]],
       code_promo: ['']
     });
   }

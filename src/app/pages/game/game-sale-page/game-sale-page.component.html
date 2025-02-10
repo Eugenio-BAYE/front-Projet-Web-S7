@@ -8,6 +8,9 @@
       <mat-form-field>
         <mat-label>Email de l'acheteur (optionnel)</mat-label>
         <input matInput formControlName="email">
+        <mat-error *ngIf="purchaseForm.get('email')?.invalid && purchaseForm.get('email')?.touched">
+          Veuillez entrer un email valide.
+        </mat-error>
       </mat-form-field>
     <button mat-raised-button type="button" [disabled]="purchaseForm.get('email')?.invalid || !purchaseForm.get('email')?.touched" (click)="fetchBuyer()">Vérifier l'acheteur</button>
   
@@ -23,7 +26,7 @@
         <mat-label>IDs des jeux (séparés par des virgules)</mat-label>
         <input matInput formControlName="jeux_a_acheter">
         <mat-error *ngIf="purchaseForm.get('jeux_a_acheter')?.invalid && purchaseForm.get('jeux_a_acheter')?.touched">
-          Veuillez entrer au moins un ID valide.
+          Les id doivent être des nombres séparés par des virgules.
         </mat-error>
       </mat-form-field>
   
