@@ -2,13 +2,17 @@
   class="flex text-text font-medium w-full relative content-center justify-between py-2 px-2 space-x-5 border-b border-overlay0">
 
   <nav class="flex content-center justify-between">
-    <a href="#" class="font-bold hover:text-prussian_blue-600 flex" style="transform: rotate(+2deg);">
+    <a href="#" class="font-bold hover:text-prussian_blue-600 flex" 
+    [ngStyle]="{'transform': 'rotate(' + getRandomRotation() + 'deg)'}"
+    >
       <img [src]="headerItems[0].icon" alt="Icon" class="h-14 w-auto self-center mx-4" />
       <p class="content-center" style="transform: rotate(-5deg);">{{ headerItems[0].title }}</p>
     </a>
   </nav>
   <!-- Item  List -->
-  <div class="content-center place-content-center self-center lg:block hidden ring-1 ring-surface0 rounded-full p-2" style="transform: rotate(1deg);">
+  <div class="content-center place-content-center self-center lg:block hidden ring-1 ring-surface0 rounded-full p-2" 
+  [ngStyle]="{'transform': 'rotate(' + getRandomRotation() + 'deg)'}"
+  >
     <a *ngFor="let navItem of navItems" href="{{navItem.route}}" class="nav-link">
       <span class="nav-label" *ngIf="!navItem.forAdmin">
         {{ navItem.label }}
