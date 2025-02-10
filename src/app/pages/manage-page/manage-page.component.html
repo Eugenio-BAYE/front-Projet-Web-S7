@@ -1,8 +1,8 @@
 <div class="grid-container">
     <h1>Gestion</h1>
     <div class="grid">
-        <a *ngFor="let manageItem of manageItems" [routerLink]="manageItem.route" class="manage-button">
-            <span class="nav-label">{{ manageItem.label }}</span>
+        <a *ngFor="let manageItem of manageItems" href="{{manageItem.route}}"  class="manage-button">
+            <span >{{ manageItem.label }}</span>
         </a>
     </div>
 </div>
