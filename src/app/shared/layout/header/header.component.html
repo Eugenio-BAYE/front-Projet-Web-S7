@@ -5,8 +5,12 @@
     <a href="#" class="font-bold hover:text-prussian_blue-600 flex" 
     [ngStyle]="{'transform': 'rotate(' + getRandomRotation() + 'deg)'}"
     >
-      <img [src]="headerItems[0].icon" alt="Icon" class="h-14 w-auto self-center mx-4" />
-      <p class="content-center" style="transform: rotate(-5deg);">{{ headerItems[0].title }}</p>
+      <img [src]="headerItems[0].icon" alt="Icon" class="h-14 w-auto self-center mx-4" 
+      [ngStyle]="{'transform': 'rotate(' + getRandomRotation() * 4 + 'deg)'}"
+      />
+      <p class="content-center" 
+      [ngStyle]="{'transform': 'rotate(' + getRandomRotation() * 4 + 'deg)'}"
+      >{{ headerItems[0].title }}</p>
     </a>
   </nav>
   <!-- Item  List -->
@@ -39,7 +43,7 @@
       </span>
     </a>
   </div>
-  <div>
+  <div class="pl-20">
   </div>
   <div class="max-lg:block hidden content-center justify-end px-4">
     <mat-icon class="scale-150">menu</mat-icon>

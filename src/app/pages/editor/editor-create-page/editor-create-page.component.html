@@ -2,7 +2,7 @@
 
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <h1>New Editor</h1>
-        <h2>Provide informations about the new user</h2>
+        <h2>Provide informations about the new editor</h2>
         <mat-form-field>
             <mat-label>Nom</mat-label>
             <input matInput formControlName="nom">
@@ -10,7 +10,7 @@
                 Your name does not look right
             </mat-error>
         </mat-form-field>
-        <button type="submit" [disabled]="false">
+        <button mat-raised-button type="submit" [disabled]="myForm.invalid">
             Create Editor
         </button>
     </form>
