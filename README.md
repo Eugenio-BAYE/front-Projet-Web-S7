@@ -5,7 +5,16 @@ Monopolytech est une plateforme permettant l'achat et la vente de jeux vidéo, d
 ## 🚀 Accéder à l'Application
 
 🔗 **Front-end** (Interface utilisateur) :  
-[Monopolytech - Frontend](https://awi-86d26c373fe5.herokuapp.com/)
+[Monopolytech ](https://awi-86d26c373fe5.herokuapp.com/)
+
+Afin de profiter du site sans problèmes, privilégiez l'utilisation de Google Chrome à Safari afin d'éviter les problèmes spécifiques à Mac
+
+## 🧪 Identifiants de Test
+
+Connection en tant qu'administrateur avec les identifiants suivants :
+
+- **Email** : `admin@example.com`
+- **Mot de passe** : `admin123`
 
 🔗 **Dépôts GitHub** :  
 - **Frontend** : [GitHub - Front](https://github.com/Eugenio-BAYE/front-Projet-Web-S7)  
@@ -17,26 +26,35 @@ Monopolytech est une plateforme permettant l'achat et la vente de jeux vidéo, d
 - **Backend** : Node.js, Express, Sequelize, PostgreSQL  
 - **Déploiement** : Heroku (front & back), Docker (en développement)
 
-## 📜 Fonctionnalités
+## 📜 Fonctionnalités à découvrir
 
-- **Gestion des vendeurs et des acheteurs**
-- **Dépôt et mise en vente de jeux**
-- **Achat de jeux avec ou sans code promotionnel**
-- **Facturation et suivi des transactions**
-- **Tableaux de bord pour les administrateurs**
-- **Gestion des sessions de vente**
-- **Filtrage avancé des jeux disponibles**
+- **Connection** : Login -> Credential Admin-> Login
 
-## 🧪 Identifiants de Test
+### Processus de vente :
 
-Tu peux te connecter en tant qu'administrateur avec les identifiants suivants :
+- **Création d'une session** : Create Session -> Enregistrement des informations
+- **Création d'un vendeur** : Manage Seller -> Enregistrement des informations
+- **Dépôt de jeux** : Game Deposit -> Enregistrement du vendeur et des jeux à déposer
+- **Mise en vente des jeux** : Put Games For Sale -> Etiquettage des jeux -> Mise en vente
+- **Achat d'un jeu** : Game Sale -> Enregistrement des jeux par leurs étiquettes -> Ventes avec Facture si acheteur enregistré
 
-- **Email** : `admin@example.com`
-- **Mot de passe** : `admin123`
+### Autres Fonctionnalités :
+
+- **Statistiques de ventes** : Par vendeur dans manage seller et générales dans Session Statistiques
+- **Catalogue** : Filtrage des jeux par catalogue
+- **Promotion** : Create Sales Code -> Gestion et création des codes promo
+- **Création d'une session** : Create Session -> Enregistrement des informations
+- **Création de licenses et d'éditeurs** : Create editor | Create License
+- **Création de manager** : Create Manager -> informations
+
+Nous vous conseillons de vous connecter en tant qu'administrateur pour profiter d'un maximum de fonctionnalités
+La base de données et déjà peuplée afin de vous éviter de perdre du temps sur les fonctionnalités basiques
+Des Vendeurs (hugovendeur@exemple.com) et acheteurs (hugo.brun@etu.umontpellier.fr) ont déja été créés et ont acheté/vendu des jeux
+
 
 ## 📖 Projet Universitaire
 
-Ce projet a été réalisé dans le cadre du **projet AWI** à **Polytech Montpellier**, avec pour objectif de développer une plateforme complète de gestion d'achats et de ventes de jeux vidéo.
+Ce projet a été réalisé dans le cadre du **projet AWI** à **Polytech Montpellier**
 
 ---
 
