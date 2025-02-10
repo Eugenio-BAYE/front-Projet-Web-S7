@@ -20,6 +20,7 @@ import { BuyerCreatePageComponent } from './pages/buyer/buyer-create-page/buyer-
 import { CodePromoManageComponent } from './pages/codePromo/code-promo-manage/code-promo-manage.component';
 import { BilanComponent } from './pages/gestion/bilan/bilan.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { AboutComponent } from './pages/about/about.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -91,6 +92,10 @@ export const routes: Routes = [
   {
     path : 'catalog',
     component : CatalogComponent
+  },
+  {
+    path: 'about',
+    component : AboutComponent
   },
   {
     path: 'license',

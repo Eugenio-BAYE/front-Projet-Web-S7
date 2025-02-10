@@ -12,13 +12,8 @@ export const NAV_ITEMS: NavItem[] = [
         forAdmin: false
     },
     {
-        label: 'Sales',
-        route: 'sales',
-        forAdmin: false
-    },
-    {
         label: 'About',
-        route: 'About',
+        route: 'about',
         forAdmin: false
     },
 ];
