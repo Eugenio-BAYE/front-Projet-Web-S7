@@ -31,11 +31,12 @@ export class SellerCreateComponent implements OnInit {
     ]),
     email: new FormControl('', [
       Validators.required,
-      Validators.maxLength(100)
-      
+      Validators.maxLength(100),
+      Validators.email
     ]),
     telephone: new FormControl('', [
       Validators.required,
+      Validators.pattern('^[0-9]{10}$')
     ]),
     adresse: new FormControl('', [
       Validators.required,
