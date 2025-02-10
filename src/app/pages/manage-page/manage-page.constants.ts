@@ -90,6 +90,11 @@ export const MANAGE_ITEMS: ManageItem[] = [
         label: 'Manage Sales Code',
         route: 'code-promo',
         isImportant: true,
+    },
+    {
+        label : 'Show Bilan',
+        route : 'bilan',
+        isImportant : true
     }
 
 ]
