@@ -19,6 +19,7 @@ import { GameSalePageComponent } from './pages/game/game-sale-page/game-sale-pag
 import { BuyerCreatePageComponent } from './pages/buyer/buyer-create-page/buyer-create-page.component';
 import { CodePromoManageComponent } from './pages/codePromo/code-promo-manage/code-promo-manage.component';
 import { BilanComponent } from './pages/gestion/bilan/bilan.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 
 export const routes: Routes = [
   // --- Main routes ---
@@ -86,6 +87,10 @@ export const routes: Routes = [
     canActivate: [roleGuard],
     data: { role: 'manager' },
     component: BilanComponent
+  },
+  {
+    path : 'catalog',
+    component : CatalogComponent
   },
   {
     path: 'license',

@@ -28,7 +28,20 @@ export class GameService {
       return this.apiService.post(`${this.endpoint}/recuperer`, { jeux_a_recup });
   }
 
-
+  searchGames(params: any): Observable<any[]> {
+    let queryParams = '';
+  
+    if (params) {
+      queryParams = Object.keys(params)
+        .filter(key => params[key] !== '' && params[key] !== null && params[key] !== undefined) // Filtrer les valeurs vides
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+        .join('&');
+    }
+  
+    const url = queryParams ? `${this.endpoint}/rechercher?${queryParams}` : `${this.endpoint}/rechercher`;
+  
+    return this.apiService.get<any[]>(url);
+  }
 
   deposerJeu(games: Game[], quantity: number[], code_promo : string | null, seller : Seller): Observable<Game> {
     const payload = {
